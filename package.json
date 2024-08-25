@@ -19,6 +19,7 @@
     "@monaco-editor/react": "4.3.1",
     "mobx": "^5.15.7",
     "mobx-react": "^5.4.4",
+    "mobx-utils": "^5.1.0",
     "monaco-editor": "^0.51.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
