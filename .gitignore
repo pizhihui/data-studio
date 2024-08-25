@@ -1,0 +1,39 @@
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarnrc.yml
+
+# Swap the comments on the following lines if you wish to use zero-installs
+# In that case, don't forget to run `yarn config set enableGlobalCache false`!
+# Documentation here: https://yarnpkg.com/features/caching#zero-installs
+
+#!.yarn/cache
+.pnp.*
+
+# Grammars
+grammar/output
+
+# Output
+dist/
+*.log
+
+# Temp and caches
+node_modules/
+.cache/
+.awcache/
+.DS_Store
+*~
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.history/
+
+# Remove after prepare project
+app/src/components/Handsontable/
