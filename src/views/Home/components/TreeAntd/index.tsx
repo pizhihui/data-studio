@@ -29,6 +29,9 @@ const treeData: TreeDataNode[] = [
 
 const menu = (
   <Menu
+    onClick={({ key, domEvent }) => {
+      console.log('click menu menu', key, domEvent);
+    }}
     items={[
       {
         key: 'add',
@@ -59,7 +62,7 @@ const TreeAntd: React.FC = () => {
   const titleRender = (nodeData: DataNode) => {
     return (
       <Dropdown overlay={menu} trigger={['contextMenu']}>
-        <div>{nodeData.title}</div>
+        <span>{nodeData.title}</span>
       </Dropdown>
     );
   };
