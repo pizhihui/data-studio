@@ -1,0 +1,53 @@
+
+.SplitPane {
+  position: relative !important;
+  height: auto !important;
+  overflow: visible !important; /* for showing context menu of the monaco editor */
+}
+
+.Resizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: #404041;
+}
+
+.Resizer:hover {
+  background-color: #404041;
+}
+
+.Resizer:hover::before {
+  border-color: #ffffff;
+}
+
+.Resizer.horizontal {
+  height: 10px;
+  cursor: row-resize;
+
+
+}
+
+.Resizer.horizontal::before {
+  content: '';
+  height: 4px;
+  width: 2em;
+  border-top: 1px solid #ffffff50;
+  border-bottom: 1px solid #ffffff50;
+}
+
+.Resizer.vertical {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  width: 10px;
+  cursor: col-resize;
+}
+
+.Resizer.vertical::before {
+  content: '';
+  height: 2em;
+  width: 4px;
+  border-left: 1px solid #ffffff50;
+  border-right: 1px solid #ffffff50;
+}

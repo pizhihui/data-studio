@@ -1,0 +1,13 @@
+.codicon-schema-explorer-nav::before {
+  content: '\e60f';
+  /*content: '\eaf0';*/
+  /*content: '\e60c';*/
+  font-family: 'ImpactDiary';
+  /*font: normal normal normal 16px/1 codicon;*/
+  font-size: 20px;
+}
+.codicon-explorer-view-icon::before {
+  content: '\e660';
+  font-family: 'holoweb-gongjutubiao';
+  font-size: 20px;
+}

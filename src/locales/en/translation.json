@@ -1,0 +1,38 @@
+{
+  "common": {
+    "filter": "Filter"
+  },
+  "login": {
+    "username": {
+      "placeholder": "Username"
+    }
+  },
+  "login.chooseTenant": "Please Choose Tenant",
+  "login.chooseTenantFailed": "Tenant selection failed, please check. . . ",
+  "login.chooseTenantSuccess": "{msg}, Use [ {tenantCode} ] to enter the system, loading. . .",
+  "login.ldapLogin": "LDAP Login",
+  "login.notbindtenant": "You have not bound a tenant, please contact the administrator",
+  "login.password.placeholder": "Password",
+  "login.password.required": "Please input your password!",
+  "login.rememberMe": "Remember me",
+  "login.result": "{msg}\t\t{time}",
+  "login.username.placeholder": "Username",
+  "login.username.required": "Please input your username!",
+  "login.token.error":
+  "Unable to get token information/session has expired, will jump to the login page, please re-login...",
+  "header": {
+    "playground": "Playground",
+    "metadata": "Metadata",
+    "cdcingestion": "CDC Ingestion",
+    "system": "System"
+  },
+  "playground": {
+    "selectCatalog": "Select Catalog"
+  },
+  "metadata": {
+    "catalog": "Catalog",
+    "tableInfo": "TableInfo",
+    "details": "Details",
+    "files": "Files"
+  }
+}

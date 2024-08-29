@@ -1,0 +1,35 @@
+{
+  "common": {
+    "filter": "过滤",
+    "login": "登录"
+  },
+
+  "login.chooseTenant": "请选择租户",
+  "login.chooseTenantFailed": "租户选择失败，请检查...",
+  "login.chooseTenantSuccess": "{msg}，使用【 {tenantCode} 】进入系统，加载中...",
+  "login.ldapLogin": "LDAP登录",
+  "login.notbindtenant": "您还没有绑定租户，请联系管理员",
+  "login.password.placeholder": "密码",
+  "login.password.required": "密码是必填项！",
+  "login.rememberMe": "自动登录",
+  "login.result": "{msg}\t\t{time}",
+  "login.username.placeholder": "用户名",
+  "login.username.required": "用户名是必填项！",
+  "login.token.error": "无法获取token信息/会话已过期，即将跳转到登录页,请重新登录...",
+
+  "header": {
+    "playground": "运行信息",
+    "metadata": "元数据",
+    "cdcingestion": "CDC集成",
+    "system": "系统"
+  },
+  "playground": {
+    "selectCatalog": "选择Catalog"
+  },
+  "metadata": {
+    "catalog": "元数据",
+    "tableInfo": "表信息",
+    "details": "详细",
+    "files": "文件"
+  }
+}
