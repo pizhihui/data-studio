@@ -26,6 +26,9 @@
     "react-router": "^6.26.1",
     "react-router-dom": "^6.26.1",
     "react-split-pane": "^0.1.92",
+    "react-virtualized": "^9.22.5",
+    "react-virtualized-tree": "^3.4.1",
+    "reflexy": "^3.42.0",
     "zustand": "^4.5.5"
   },
   "devDependencies": {

@@ -32,5 +32,11 @@
 //  "include": ["src", "vite.config.ts",
 //    "src/@types/react-app-env.d.ts", "src/@types/i18next.d.ts"
 //  ],
-  "include": ["src","./**/*.d.ts", "./**/*.ts", "./**/*.tsx"]
+  "include": [
+    "src",
+    "./**/*.d.ts",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "node_modules/.pnpm/@types+node@22.5.0/node_modules/@types/node/globals.d.ts"
+  ]
 }
