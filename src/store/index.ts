@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { User } from '@/types/api'
+import { User } from '@/services/types/api'
 import { devtools } from 'zustand/middleware'
 
 

@@ -1,4 +1,4 @@
-import { Login, Result } from '@/types/api';
+import { Login, Result } from '@/services/types/api';
 import request from '@/utils/request.ts';
 import hyRequest from '@/services/requests';
 

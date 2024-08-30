@@ -1,20 +1,22 @@
 import React from 'react';
 import Splitter from '@/components/Splitter';
 
+import css from './index.module.css'
+import classNames from 'classnames';
 
 const Welcome: React.FC = () => {
+
+  const clasName = classNames(css.div1)
+  console.log('class name......', css)
+  console.log('class name......', clasName)
   return (
-    <div>
-      <Splitter primary="second"
-                minSize={100}
-                maxSize={-100}
-                defaultSize="calc(100vw - 225px)"
-                // size={uiStore.primaryPaneSize}
-                // onDragFinished={uiStore.updatePrimaryPaneSize}
-      >
-        <div className="div1">hello1</div>
-        <div className="div2">hello2</div>
-      </Splitter>
+    <div className={css.div1}>
+      <div>
+        hello
+      </div>
+      <div>
+        world
+      </div>
     </div>
   )
 }

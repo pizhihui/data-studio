@@ -10,6 +10,9 @@ import { createRequire } from 'node:module'
 // pnpm install @types/node -D
 import { fileURLToPath, URL } from 'node:url'
 
+import { patchCssModules } from 'vite-css-modules'
+
+
 const WRONG_CODE = `import { bpfrpt_proptype_WindowScroller } from "../WindowScroller.js";`;
 export function reactVirtualized(): Plugin {
   return {
@@ -38,15 +41,26 @@ export function reactVirtualized(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // css: {
-  //   devSourcemap: true,
-  //   transformer: 'lightningcss',
-  //   // 对css的行为进行配置
-  //   // modules配置最终会丢给postcss modules
-  //   modules: {
-  //
-  //   }
-  // },
+  css: {
+    devSourcemap: true,
+    // 'postcss' | 'lightningcss';
+    // transformer: 'postcss',
+    // 对css的行为进行配置
+    // modules配置最终会丢给postcss modules
+    modules: {
+      //scopeBehaviour: 'local'
+      // generateScopedName: '[name]_[local]_[hash:base64:5]'
+      generateScopedName: '[name]__[local]--[hash:5]'
+      // generateScopedName: (className, filePath, css) => {
+      //   const classNameIndex = css.indexOf(`.${className}`);
+      //   const lineNumber = css.substr(0, classNameIndex).split(/\r?\n/).length;
+      //   const fileName = path.basename(filePath, '.module.css');
+      //   const prefix = 'm_';
+      //
+      //   return `${prefix}${fileName}_${className}_${lineNumber}`;
+      // },
+    }
+  },
   server: {
     host: '127.0.0.1',
     port: 8067,
@@ -67,5 +81,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    target: 'esnext'
   }
 })

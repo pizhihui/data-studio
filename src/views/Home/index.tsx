@@ -5,8 +5,8 @@ import MiddleContainer from '@/views/Home/components/MiddleContainer';
 import Split from '@uiw/react-split';
 
 import './index.css'
-import TreeContainer from "@/views/Home/components/Tree";
-import TreeAntd from "@/views/Home/components/TreeAntd";
+import TreeContainer from "@/views/Home/components/TreeContainer";
+import TreeAntd from "src/views/Home/components/TreeContainer/TreeAntd";
 
 const Home: React.FC = () => {
   return (
@@ -56,8 +56,8 @@ const Home: React.FC = () => {
         height: 'calc(100vh - 130px)'
         // minHeight: '600px'
       }}>
-        {/*<TreeContainer />*/}
-        <TreeAntd />
+        <TreeContainer />
+        {/*<TreeAntd />*/}
       </div>
       {/* 第三部分 */}
       <div style={{ flex: 2 }}>Pane 3</div>

@@ -8,6 +8,7 @@ import AuthLoader from '@/router/AuthLoader.ts';
 import Home from '@/views/Home';
 import Welcome from '@/views/Welcome';
 
+
 export const routes: RouteObject[] = [
   {
     path: '/',

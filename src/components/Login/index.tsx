@@ -1,7 +1,7 @@
 import { LoginForm } from './LoginForm/Login.tsx'
 
 import './index.css'
-import { Login } from '@/types/api';
+import { Login } from '@/services/types/api';
 
 import storage from '@/utils/storage'
 import api from '@/services/api.ts';

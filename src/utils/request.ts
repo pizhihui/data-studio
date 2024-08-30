@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 import { showLoading, hideLoading } from './loading'
 import storage from './storage'
-import { Result } from '@/types/api.d.ts';
+import { Result } from '@/services/types/api.d.ts';
 import { message } from 'antd';
 // import { message } from '@/utils/AntdGlobal.tsx';
 

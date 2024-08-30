@@ -6,7 +6,7 @@ import { useStore } from '@/store'
 import './index.css'
 
 import logo from '@/assets/images/hulianLogo.png'
-import { User } from '@/types/api';
+import { User } from '@/services/types/api';
 
 const { Header, Content, Footer } = Layout;
 

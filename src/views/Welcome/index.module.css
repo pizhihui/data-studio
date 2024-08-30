@@ -1,0 +1,11 @@
+@value bg-color, bg-color-dd, text-color, text-color-50, link-color from '/src/assets/styles/vars.css';
+
+
+.div1 {
+  background-color: bg-color;
+  color: red;
+}
+
+.div2 {
+
+}
