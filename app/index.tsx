@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {action, decorate, observable} from 'mobx';
 import {observer} from "mobx-react";
+import CssModulesDemo from './src/module/CssModulesDemo';
 
 interface HelloProps {
     name: string;
@@ -43,6 +44,7 @@ class HelloMessage extends React.Component<HelloProps, HelloState> {
 
 ReactDOM.render(
     // <HelloMessage name="Taylor" store = { new Store() }/>,
-    <HelloMessage name = "Taylor" store = { new Store() }/>,
+    // <HelloMessage name = "Taylor" store = { new Store() }/>,
+  <CssModulesDemo />,
     document.getElementById('root')
 );

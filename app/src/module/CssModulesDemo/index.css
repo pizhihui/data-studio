@@ -1,0 +1,8 @@
+@value bg-color, bg-color-dd, text-color, text-color-50, link-color from '/app/src/assets/styles/vars.css';
+
+/*@import "/app/src/assets/styles/vars.css";*/
+
+.box {
+    background-color: link-color;
+    font-size: 22px;
+}
