@@ -22,7 +22,7 @@ import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 // import en from '@/locales/en/translation.json';
 // import zh from '@/locales/zh-CN/translation.json';
-import { localeTransitions } from "./loadLangsToResouerce.ts";
+import { localeTransitions } from "./loadLangsToResouerce";
 // don't want to use this?
 // have a look at the Quick start guide
 // for passing in lng and translations on init
