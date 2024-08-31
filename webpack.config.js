@@ -54,7 +54,17 @@ module.exports = {
           },
         ],
       },
-
+      {
+        test: /\.css$/,
+        // include: path.join(__dirname, 'node_modules'),
+        // or
+        include: /reflexy/,
+        use: [
+          // ...
+          { loader: 'css-loader', options: { modules: true } }, // enabled css-modules is necessary
+          // ...
+        ],
+      },
     ]
   },
   plugins: [
