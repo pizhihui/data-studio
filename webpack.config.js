@@ -19,6 +19,13 @@ module.exports = {
     liveReload: false,
     compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
+    // https://stackoverflow.com/questions/76187282/react-resizeobserver-loop-completed-with-undelivered-notifications
+    // React: ResizeObserver loop completed with undelivered notifications
+    client: {
+      overlay: {
+        runtimeErrors: false,
+      },
+    },
   },
   // optimization: {
   //   runtimeChunk: 'single'

@@ -9,6 +9,12 @@ import TreeContainer from "@/views/Home/components/TreeContainer";
 import TreeAntd from "./components/TreeContainer/TreeAntd";
 
 const Home: React.FC = () => {
+
+
+  const handleClick = (e: any) => {
+    console.log('clickaaaaa', e)
+  }
+
   return (
     /*<Splitter primary="second"
               minSize={100}
@@ -34,21 +40,38 @@ const Home: React.FC = () => {
         borderRight: '1px solid rgb(207, 211, 230)'
       }}>
         <div style={{ height:'100%' }}>
-          <ul style={{ padding: '0', listStyleType: 'none', display: 'flex', flexDirection: 'column'  }}>
+          <ul style={{
+            padding: '0',
+            listStyleType: 'none',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
             <li>
-              <a href="" style={{ display: 'flex', alignItems:'center' , justifyContent:'center', width: '44px',height: '44px' }}>
-                12312
+              <a href="#"
+                 className={['codicon','codicon-files'].join(' ')}
+                 style={{ display: 'flex',
+                   alignItems:'center' ,
+                   justifyContent:'center',
+                   width: '44px',
+                   height: '44px',
+                   fontSize: '24px'
+              }}
+              onClick={handleClick}
+              >
               </a>
             </li>
             <li>
-              <a href=""
+              <a href="#"
+                 className={['codicon','codicon-server'].join(' ')}
                  style={{ display: 'flex', alignItems:'center' ,
                    justifyContent:'center',
                    width: '44px',
                    height: '44px',
-                   backgroundColor: '#eff3f8'
-              }}>
-                243
+                   backgroundColor: '#eff3f8',
+                   fontSize: '24px'
+              }}
+                 onClick={handleClick}
+              >
               </a>
             </li>
           </ul>

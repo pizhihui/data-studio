@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { ConfigProvider, App as AntdApp, theme } from 'antd'
+import {ConfigProvider, App as AntdApp, theme, Layout} from 'antd'
 
 import LoginContainer from './components/Login'
 import AntdGlobal from '@/utils/AntdGlobal'
@@ -21,6 +21,11 @@ function App() {
         token: {
           colorPrimary: '#554c39'
         },
+          components: {
+            Radio: {},
+            Menu: {},
+            Layout: { headerHeight: '55px' }
+          },
         algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
       }}>
         <AntdApp>
