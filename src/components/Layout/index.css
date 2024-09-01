@@ -1,21 +1,21 @@
 
-.header-container {
+.headercontainer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.header-left {
+.headerleft {
 }
-.header-menu {
+.headermenu {
 }
-.header-right {
+.headerright {
   margin-left: auto;
   cursor: pointer;
 }
 
 
-.header-left-logo {
+.headerleftlogo {
    display: flex;
   height: 64px;
   padding: 12px 10px 8px 10px;
@@ -25,12 +25,12 @@
   overflow: hidden;
 }
 
-.header-left-logo-img {
+.headerleftlogoimg {
   height: 100%;
   width: 145px;
   margin: 0 10px;
 }
 
-.ant-layout-footer {
+.antlayoutfooter {
   padding: 10px 50px;
 }

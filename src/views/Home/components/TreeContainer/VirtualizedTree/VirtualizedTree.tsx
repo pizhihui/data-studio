@@ -1,60 +1,14 @@
 import Tree , { FlattenedNode } from 'react-virtualized-tree';
-
 import classNames from 'classnames';
-
-
-import {Nodes} from './treeData.ts'
+import { Flex } from 'reflexy';
 import React, {useEffect} from "react";
 import { isNodesEquivalent } from '@babel/types';
-import renderNode, { defaultRenderers } from '@/views/Home/components/TreeContainer/VirtualizedTree/renderNode.tsx';
+import renderNode, {defaultRenderers, NodeActions, TreeActions} from './renderNode';
 
-import css from './VirtualizedTree.module.css'
+import css from './VirtualizedTree.css'
+import {TypedNode} from "@/store/Tree/TreeStore";
 
-const Deepness = ({node, children}) => {
-  const deepness = node.deepness + 1;
-  const className = classNames({
-    [`mi mi-filter-${deepness}`]: deepness <= 9,
-    'filter-9-plus': deepness > 9,
-  });
-
-  return (
-    <span>
-      <i />
-    {children}
-    </span>
-  );
-};
-
-
-type TypedNode = Node & { children?: TypedNode[] };
-
-
-// class TreeContainer extends React.Component {
-//
-//   componentDidMount() {
-//     console.log('Component mounted', Nodes);
-//   }
-//
-//   render() {
-//     return (
-//       <VirtualizedTree nodes={Nodes}>
-//         {({style, node, ...rest}) => (
-//           <div style={style}>
-//             {node.name}
-//           </div>
-//         )}
-//       </VirtualizedTree>
-//     );
-//   }
-// }
-
-// export interface TreeProps extends NodeActions, TreeActions {
-//   nodes: TypedNode[];
-//   onChange: any;
-//   highlightedId?: TypedNode['id'];
-// }
-
-export interface TreeProps {
+export interface TreeProps extends NodeActions, TreeActions {
   nodes: TypedNode[];
   onChange: any;
   highlightedId?: TypedNode['id'];
@@ -62,6 +16,8 @@ export interface TreeProps {
 
 
 function VirtualizedTree({ nodes, onChange, highlightedId, onCollapse, ...actions  }: TreeProps) {
+
+  console.log('tree......', css)
 
   return (
     /*<Tree nodes={Nodes} onChange={handleChange}>
@@ -71,21 +27,23 @@ function VirtualizedTree({ nodes, onChange, highlightedId, onCollapse, ...action
         </div>
       )}
     </Tree>*/
-    <Tree
-      nodeMarginLeft={0}
-      nodes={nodes}
-      onChange={onChange as any}
-      scrollToId={highlightedId as any}
-          >
-      {({ node, ...rest }) =>
-        renderNode(defaultRenderers, {
-          node: node as FlattenedNode & TypedNode,
-          onCollapse,
-          ...rest,
-          ...actions,
-        })
-      }
-    </Tree>
+    <Flex grow className={css.root}>
+      <Tree
+        nodeMarginLeft={0}
+        nodes={nodes}
+        onChange={onChange as any}
+        scrollToId={highlightedId as any}
+      >
+        {({ node, ...rest }) =>
+          renderNode(defaultRenderers, {
+            node: node as FlattenedNode & TypedNode,
+            onCollapse,
+            ...rest,
+            ...actions,
+          })
+        }
+      </Tree>
+    </Flex>
   )
 }
 

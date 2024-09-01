@@ -1,7 +1,7 @@
 import React from 'react';
 import Splitter from '@/components/Splitter';
 
-import css from './index.module.css'
+import css from './index.css'
 import classNames from 'classnames';
 
 const Welcome: React.FC = () => {

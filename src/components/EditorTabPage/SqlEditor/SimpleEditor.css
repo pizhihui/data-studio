@@ -1,0 +1,28 @@
+.myInlineDecoration {
+  color: red !important;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.myLineDecoration {
+  /*background: lightblue;*/
+  background: #56c750;
+  width: 5px !important;
+  margin-left: 5px;
+}
+
+.runDecoration {
+  /*background: red;*/
+  cursor: pointer;
+  /*&::before {*/
+  /*  color: pink;*/
+  /*  font-size: 20px;*/
+  /*}*/
+}
+
+.myContentClass {
+  /*background: lightblue;*/
+  background: #56c750;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flex } from 'reflexy';
 import css from './SpecialTitle.css';
 import { MessageOutlined, ControlOutlined } from '@ant-design/icons';
 
@@ -12,10 +13,10 @@ export default function SpecialTitle({ name, type }: Props) {
   if (type === 'server.overview') icon = <ControlOutlined />;
 
   return (
-    <span>
+    <Flex alignItems="center" hfill className={css.root}>
       {icon}
       <div>{name}</div>
-      <span />
-    </span>
+      <Flex grow justifyContent="flex-end" />
+    </Flex>
   );
 }

@@ -1,12 +1,12 @@
-import { LoginForm } from './LoginForm/Login.tsx'
+import { LoginForm } from './LoginForm/Login'
 
 import './index.css'
 import { Login } from '@/services/types/api';
 
 import storage from '@/utils/storage'
-import api from '@/services/api.ts';
+import api from '@/services/api';
 import React, { useState } from 'react';
-import { message } from '@/utils/AntdGlobal.tsx';
+import { message } from '@/utils/AntdGlobal';
 import { sleep } from '@/utils';
 
 

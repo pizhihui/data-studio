@@ -1,0 +1,8 @@
+.editor {
+  height: calc(100% - 32px - 1em);
+}
+
+.toolbar {
+  /*height: calc(32px + 1em);*/
+  height: 32px;
+}

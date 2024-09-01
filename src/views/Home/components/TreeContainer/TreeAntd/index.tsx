@@ -3,6 +3,8 @@ import React from 'react';
 import {Dropdown, Tree} from 'antd';
 import type { GetProps, TreeDataNode } from 'antd';
 import { Menu } from 'antd';
+import css from './index.css'
+// import './index.css'
 
 type DirectoryTreeProps = GetProps<typeof Tree.DirectoryTree>;
 
@@ -59,7 +61,7 @@ const TreeAntd: React.FC = () => {
     console.log('Trigger Expand', keys, info);
   };
 
-  const titleRender = (nodeData: DataNode) => {
+  const titleRender = (nodeData:any) => {
     return (
       <Dropdown overlay={menu} trigger={['contextMenu']}>
         <span>{nodeData.title}</span>
@@ -69,14 +71,20 @@ const TreeAntd: React.FC = () => {
 
 
   return (
-    <DirectoryTree
-      multiple
-      defaultExpandAll
-      titleRender={titleRender}
-      onSelect={onSelect}
-      onExpand={onExpand}
-      treeData={treeData}
-    />
+    <div>
+      <div className={css.box}>
+        测试文件 ABC阿斯蒂芬萨达发生的
+      </div>
+      <DirectoryTree
+        multiple
+        defaultExpandAll
+        titleRender={titleRender}
+        onSelect={onSelect}
+        onExpand={onExpand}
+        treeData={treeData}
+      />
+    </div>
+
   );
 };
 

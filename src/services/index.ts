@@ -1,1 +1,1 @@
-export { default as Databases } from './types/databases.ts';
+export { default as Databases } from './types/databases';

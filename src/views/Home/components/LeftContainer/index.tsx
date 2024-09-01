@@ -10,9 +10,8 @@ const LeftContainer: React.FC = () => {
     console.log('change tab', e.target.value);
   };
 
-  const [alignValue, setAlignValue] = React.useState<Align>('center');
 
-  const changeKey = (key) => {
+  const changeKey = (key: string) => {
     console.log('change key.....', key)
   }
 
@@ -24,7 +23,7 @@ const LeftContainer: React.FC = () => {
         type='line'
         // animated={{ inkBar: false, tabPane: false }}
         indicator={{ size: (origin) => origin + 0, align: 'center' }}
-        tabBarGutter='40'
+        tabBarGutter={40}
         // tabBarStyle={{
         //   backgroundColor: 'pink',
         //   borderBottom: 'unset'

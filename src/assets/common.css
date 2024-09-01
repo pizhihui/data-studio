@@ -5,6 +5,13 @@
   src: url(@/assets/icons/mc-icon-project.woff);
 }
 
+
+@font-face {
+  font-family: "CondiconDisplay";
+  src: url(@/assets/icons/codiconme.ttf);
+}
+
+
 @font-face {
   font-family: "holoweb-gongjutubiao"; /* Project id 1810616 */
   src:

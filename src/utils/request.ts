@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 
 import { showLoading, hideLoading } from './loading'
 import storage from './storage'
-import { Result } from '@/services/types/api.d.ts';
+import { Result } from '@/services/types/api';
 import { message } from 'antd';
 // import { message } from '@/utils/AntdGlobal.tsx';
 
@@ -46,15 +46,15 @@ instance.interceptors.response.use(
     const data: Result = response.data
     hideLoading()
     if (response.config.responseType === 'blob') return response
-    if (data.code === 500001) {
-      message.error(data.msg)
+    if (data.status === 500001) {
+      message.error(data.message)
       storage.remove('token')
       location.href = '/login?callback=' + encodeURIComponent(location.href)
-    } else if (data.code != 0) {
+    } else if (data.status != 0) {
       if (response.config.showError === false) {
         return Promise.resolve(data)
       } else {
-        message.error(data.msg)
+        message.error(data.message)
         return Promise.reject(data)
       }
     }
@@ -77,6 +77,7 @@ export default {
     return instance.get(url, { params, ...options })
   },
   post<T>(url: string, params?: object, options: IConfig = { showLoading: true, showError: true }): Promise<T> {
+    // @ts-ignore
     return instance.post(url, params, options)
   },
   downloadFile(url: string, data: any, fileName = 'fileName.xlsx') {

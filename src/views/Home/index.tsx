@@ -6,7 +6,7 @@ import Split from '@uiw/react-split';
 
 import './index.css'
 import TreeContainer from "@/views/Home/components/TreeContainer";
-import TreeAntd from "src/views/Home/components/TreeContainer/TreeAntd";
+import TreeAntd from "./components/TreeContainer/TreeAntd";
 
 const Home: React.FC = () => {
   return (
@@ -36,23 +36,27 @@ const Home: React.FC = () => {
         <div style={{ height:'100%' }}>
           <ul style={{ padding: '0', listStyleType: 'none', display: 'flex', flexDirection: 'column'  }}>
             <li>
-              <a href="" className='codicon-schema-explorer-nav' style={{ display: 'flex', alignItems:'center' , justifyContent:'center', width: '44px',height: '44px' }}></a>
+              <a href="" style={{ display: 'flex', alignItems:'center' , justifyContent:'center', width: '44px',height: '44px' }}>
+                12312
+              </a>
             </li>
             <li>
-              <a href="" className='codicon codicon-explorer-view-icon'
+              <a href=""
                  style={{ display: 'flex', alignItems:'center' ,
                    justifyContent:'center',
                    width: '44px',
                    height: '44px',
                    backgroundColor: '#eff3f8'
-              }}></a>
+              }}>
+                243
+              </a>
             </li>
           </ul>
         </div>
       </div>
       {/* 第二部分 */}
       <div style={{
-        minWidth: '200px',
+        minWidth: '400px',
         height: 'calc(100vh - 130px)'
         // minHeight: '600px'
       }}>
@@ -60,7 +64,9 @@ const Home: React.FC = () => {
         {/*<TreeAntd />*/}
       </div>
       {/* 第三部分 */}
-      <div style={{ flex: 2 }}>Pane 3</div>
+      <div style={{ flex: 2 }}>
+        <MiddleContainer />
+      </div>
     </Split>
   )
 }

@@ -1,22 +1,44 @@
 {
   "compilerOptions": {
     /*  */
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "outDir": "./dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "sourceMap": true,
     "noImplicitAny": true,
 
     /*  */
     "target": "es6",
     "module": "esnext",
+    "moduleResolution": "node",
+
+    /* resove json file */
+    "resolveJsonModule": true,
 
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
 
+    /* custom */
+    "noImplicitThis": true /* no  */,
+    "forceConsistentCasingInFileNames": true /* no */,
+    "strictNullChecks": true /* no */,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": false /* true */,
+    "noUnusedLocals": false /* true */,
+    "strict": false, /* true */
+    "esModuleInterop": true,
+
+    "lib": ["dom", "dom.iterable", "esnext"]
+
     /* type roots */
-    "typeRoots": ["./app/types", "./node_modules/@types"]
-  }
+//    "typeRoots": ["./src/@types/*", "./node_modules/@types/*"]
+
+  },
+  "include": ["src", "src/@types/*"],
+  "files": ["./src/index.tsx"]
 }

@@ -1,17 +1,14 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 import { ConfigProvider, App as AntdApp, theme } from 'antd'
 
-
 import LoginContainer from './components/Login'
-import AntdGlobal from '@/utils/AntdGlobal.tsx';
-import { RouterProvider } from 'react-router-dom';
-import router from '@/router';
+import AntdGlobal from '@/utils/AntdGlobal'
+import {BrowserRouter, RouterProvider} from 'react-router-dom'
+import router from '@/router'
 
 import './assets/common.css'
+import Home from "@/views/Home/index3";
 
 function App() {
 
@@ -31,6 +28,7 @@ function App() {
           {/* router */}
           {/* <div className="main">{useRoutes(routes)}</div> */}
           <RouterProvider router={router} />
+          {/*<Home />*/}
         </AntdApp>
       </ConfigProvider>
     </>

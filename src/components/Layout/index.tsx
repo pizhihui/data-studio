@@ -3,8 +3,11 @@ import { Outlet } from 'react-router';
 import { Menu, Layout, Avatar, Dropdown, Button } from 'antd';
 import type { MenuProps } from 'antd'
 import { useStore } from '@/store'
-import './index.css'
+// import './index.css'
 
+import css from './index.css'
+
+// @ts-ignore
 import logo from '@/assets/images/hulianLogo.png'
 import { User } from '@/services/types/api';
 
@@ -111,13 +114,12 @@ const LayoutContainer: React.FC = () => {
     <Layout>
       {/*<Header className="header-container">*/}
       <Header style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="header-left">
-          <div className="header-left-logo">
-            <img className="header-left-logo-img" src={logo} alt=""/>
-            {/*<div className="demo-logo-image"></div>*/}
+        <div className={css.headerleft}>
+          <div className={css.headerleftlogo}>
+            <img className={css.headerleftlogoimg} src={logo} alt=""/>
           </div>
         </div>
-        <div className="header-menu">
+        <div className={css.headermenu}>
         <Menu
             theme="dark"
             mode="horizontal"
@@ -126,7 +128,7 @@ const LayoutContainer: React.FC = () => {
             // style={{ flex: 1, minWidth: 0 }}
           />
         </div>
-        <div className="header-right">
+        <div className={css.headerright}>
           <Dropdown menu={ levelMenuProps } trigger={['hover']} placement="bottom">
             <Avatar style={{ backgroundColor: '#f56a00', verticalAlign: 'middle' }} size="large">
               Tom
@@ -143,7 +145,6 @@ const LayoutContainer: React.FC = () => {
             borderRadius: 0,
           }}
         >
-          <Button onClick={handleBtnClick}>click me</Button>
           <Outlet/>
         </div>
       </Content>

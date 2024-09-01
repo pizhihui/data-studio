@@ -1,5 +1,5 @@
 import { Login, Result } from '@/services/types/api';
-import request from '@/utils/request.ts';
+import request from '@/utils/request';
 import hyRequest from '@/services/requests';
 
 export default {

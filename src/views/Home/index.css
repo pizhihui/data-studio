@@ -1,4 +1,4 @@
-.codicon-schema-explorer-nav::before {
+.codiconschemaexplorernav::before {
   content: '\e60f';
   /*content: '\eaf0';*/
   /*content: '\e60c';*/
@@ -6,8 +6,20 @@
   /*font: normal normal normal 16px/1 codicon;*/
   font-size: 20px;
 }
-.codicon-explorer-view-icon::before {
+.codiconexplorerviewicon::before {
   content: '\e660';
   font-family: 'holoweb-gongjutubiao';
   font-size: 20px;
+}
+
+.sider-container {
+  position: sticky;
+  top: 0;
+  overflow: auto;
+  max-height: 100vh;
+}
+
+.baseContent {
+  /*border-left: 1px solid black;*/
+  /*border-bottom: 1px solid crimson;*/
 }

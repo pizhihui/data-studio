@@ -1,6 +1,7 @@
 import { Menu } from 'antd';
 import { useCallback } from 'react';
 import { MenuInfo } from 'rc-menu/lib/interface';
+import {Databases} from "@/services";
 
 
 export enum ServerAction {
@@ -23,6 +24,7 @@ export default function ContextMenu({ onContextMenuAction, server }: ContextMenu
   const onClick = useCallback(({ key, domEvent }: MenuInfo) => {
     domEvent.preventDefault();
     domEvent.stopPropagation();
+    // @ts-ignore
     onContextMenuAction && ServerAction[key] && onContextMenuAction(+key as ServerAction, server);
   }, []);
 

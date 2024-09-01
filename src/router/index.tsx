@@ -1,11 +1,11 @@
 import LoginContainer from '@/components/Login';
-import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
+import {createBrowserRouter, createHashRouter, Navigate, RouteObject} from 'react-router-dom';
 import Error403 from '@/views/403'
 import Error404 from '@/views/404'
 import LayoutContainer from '@/components/Layout';
-import AuthLoader from '@/router/AuthLoader.ts';
+import AuthLoader from '@/router/AuthLoader';
 
-import Home from '@/views/Home';
+import Home from '@/views/Home/index';
 import Welcome from '@/views/Welcome';
 
 
@@ -24,11 +24,11 @@ export const routes: RouteObject[] = [
     loader: AuthLoader,
     children: [
       {
-        path: '/Welcome',
+        path: '/welcome',
         element: <Welcome />
       },
       {
-        path: '/Home',
+        path: '/home',
         element: <Home />
       },
     ]
@@ -47,4 +47,4 @@ export const routes: RouteObject[] = [
   }
 ]
 
-export default createBrowserRouter(routes)
+export default createHashRouter(routes)

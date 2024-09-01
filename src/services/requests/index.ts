@@ -1,7 +1,7 @@
 import { BASE_URL, TIME_OUT } from './config'
 import HYRequest from './request'
 // import { Result } from '@/types/api';
-import { message } from '@/utils/AntdGlobal.tsx';
+import { message } from '@/utils/AntdGlobal';
 
 const hyRequest = new HYRequest({
   baseURL: BASE_URL,
@@ -14,7 +14,7 @@ const hyRequest = new HYRequest({
       console.log('response success res......', res)
       const status = res.status
       if(status === 0) {
-        message.error(res.message)
+        message.error(res.statusText)
         return Promise.reject(res)
       }
       return res.data;

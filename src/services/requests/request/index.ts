@@ -42,6 +42,7 @@ class HYRequest {
 
     // 针对特定的hyRequest实例添加拦截器
     this.instance.interceptors.request.use(
+      // @ts-ignore
       config.interceptors?.requestSuccessFn,
       config.interceptors?.requestFailureFn
     )

@@ -1,18 +1,19 @@
 import React from 'react';
 import SplitPane, { SplitPaneProps } from 'react-split-pane';
 import classNames from 'classnames';
-// import css from './Splitter.css';
-import './Splitter2.css'
+import css from './Splitter.css';
 
 export default function Splitter({
+  className,
   ...rest
 }: SplitPaneProps & { children: React.ReactNode }) {
+  console.log('splitter', css, classNames(css.root, className))
   return (
     <SplitPane
       split="vertical"
-      minSize={750}
-      defaultSize={750}
-      // className={classNames(css.root, className)}
+      minSize={350}
+      defaultSize={350}
+      className={classNames(css.root, className)}
       {...rest}
     />
   );
