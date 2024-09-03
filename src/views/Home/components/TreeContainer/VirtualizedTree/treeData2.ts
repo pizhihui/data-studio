@@ -1,4 +1,4 @@
-import { Node } from 'react-virtualized-tree';
+import { Node } from 'react-virtualized-tree-fix';
 import {Databases} from "@/services";
 
 type TypedNode = Node & { children?: TypedNode[] };

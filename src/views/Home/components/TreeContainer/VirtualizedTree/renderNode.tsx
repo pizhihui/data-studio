@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { RendererProps, selectors } from 'react-virtualized-tree';
+import { RendererProps, selectors } from 'react-virtualized-tree-fix';
 import { Flex } from 'reflexy';
 import { TypedNode } from '@/store/Tree/TreeStore';
 import css from './VirtualizedTree.css';
@@ -61,7 +61,7 @@ function ExpandableRenderer({ node, onChange, children }: RenderNodeProps) {
 
   // has children
   const { hasChildren, isExpanded } = selectors.getNodeRenderOptions(node);
-  // console.log('node: hasChildren: ', node.name, hasChildren)
+  console.log('node: hasChildren: ', node.name, hasChildren)
   return (
     <Flex
       wrap={false}
@@ -93,7 +93,7 @@ function NodeRenderer({
                         onCommandAction,
                       }: RenderNodeProps) {
 
-  // console.log('rendernode......', node)
+  console.log('rendernode......', node)
 
   if (Databases.isServer(node)) {
     return (

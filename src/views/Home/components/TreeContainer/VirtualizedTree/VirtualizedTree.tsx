@@ -1,4 +1,4 @@
-import Tree , { FlattenedNode } from 'react-virtualized-tree';
+import Tree , { FlattenedNode } from 'react-virtualized-tree-fix';
 import classNames from 'classnames';
 import { Flex } from 'reflexy';
 import React, {useEffect} from "react";

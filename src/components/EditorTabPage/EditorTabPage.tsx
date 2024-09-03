@@ -5,6 +5,7 @@ import { ActionType as EditorActionType } from './SqlEditor/Toolbar';
 import {Databases} from "@/services";
 
 import { Nodes2 } from '@/views/Home/components/TreeContainer/VirtualizedTree/treeData2'
+import DataItemsLayout from '@/components/DataItemsLayout';
 
 
 const EditorTabPage: React.FC = () => {
@@ -59,7 +60,7 @@ const EditorTabPage: React.FC = () => {
              style={{
                border: '1px solid #d5d5d5',
                borderRadius: 3,
-               height: 500
+               height: 700
              }}>
         <div style={{ height: '50%' }}>
           <SqlEditor
@@ -76,7 +77,7 @@ const EditorTabPage: React.FC = () => {
           />
         </div>
         <div style={{ height: '50%' }}>
-          table
+          <DataItemsLayout/>
         </div>
       </Split>
 
