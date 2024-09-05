@@ -1,1 +1,1 @@
-export { default } from './VirtualizedTree'
+export { default } from './VirtualizedTree.tsx'

@@ -68,12 +68,12 @@ importers:
       react-split-pane:
         specifier: ^0.1.92
         version: 0.1.92(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-virtualized:
-        specifier: ^9.22.5
-        version: 9.22.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-virtualized-tree:
-        specifier: ^3.4.1
-        version: 3.4.1(react-dom@18.3.1(react@18.3.1))(react-virtualized@9.22.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      react-virtualized-fix:
+        specifier: ^9.23.4
+        version: 9.23.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-virtualized-tree-fix:
+        specifier: ^3.5.1
+        version: 3.5.1(react-dom@18.3.1(react@18.3.1))(react-virtualized@9.22.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       zustand:
         specifier: ^4.5.5
         version: 4.5.5(@types/react@18.3.4)(react@18.3.1)
@@ -93,6 +93,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
+      '@types/react-virtualized':
+        specifier: ^9.21.30
+        version: 9.21.30
       '@vitejs/plugin-react':
         specifier: ^4.3.1
         version: 4.3.1(vite@5.4.2(@types/node@22.5.0)(less@4.2.0)(lightningcss@1.26.0)(terser@5.31.6))
@@ -801,6 +804,9 @@ packages:
 
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
+
+  '@types/react-virtualized@9.21.30':
+    resolution: {integrity: sha512-4l2TFLQ8BCjNDQlvH85tU6gctuZoEdgYzENQyZHpgTHU7hoLzYgPSOALMAeA58LOWua8AzC6wBivPj1lfl6JgQ==}
 
   '@types/react@18.3.4':
     resolution: {integrity: sha512-J7W30FTdfCxDDjmfRM+/JqLHBIyl7xUIp9kwK637FGmY7+mkSFSe6L4jpZzhj5QMfLssSDP4/i75AKkrdC7/Jw==}
@@ -1910,8 +1916,14 @@ packages:
   react-style-proptype@3.2.2:
     resolution: {integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==}
 
-  react-virtualized-tree@3.4.1:
-    resolution: {integrity: sha512-MolDiG9XgmflPPX9uPzf7iSWLqOHDlCZEiyA4FVYjv2pHfu6zV6/SIEFVyHdurWD80IjUuZ3Er12gq2bQQak2Q==}
+  react-virtualized-fix@9.23.4:
+    resolution: {integrity: sha512-QZFy6RNx9NaD6z8THgaQD886UqHO4PELfo3dcEzyVimM7qv24zhMjB4mOEse6VqeYA10jDqDwv4tIklERaFYoA==}
+    peerDependencies:
+      react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0
+      react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0
+
+  react-virtualized-tree-fix@3.5.1:
+    resolution: {integrity: sha512-cBhYXAqi44QcAeKaaEnkM/ioQPfJofi/3GXyKlwo4GBoHCD6biwOWRhwr4DJFAYFVUw/IBJeNzQQS/eKr2m5LA==}
     peerDependencies:
       react: 16.x
       react-dom: ^16.2.0
@@ -2996,6 +3008,11 @@ snapshots:
 
   '@types/react-dom@18.3.0':
     dependencies:
+      '@types/react': 18.3.4
+
+  '@types/react-virtualized@9.21.30':
+    dependencies:
+      '@types/prop-types': 15.7.12
       '@types/react': 18.3.4
 
   '@types/react@18.3.4':
@@ -4247,7 +4264,18 @@ snapshots:
     dependencies:
       prop-types: 15.8.1
 
-  react-virtualized-tree@3.4.1(react-dom@18.3.1(react@18.3.1))(react-virtualized@9.22.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  react-virtualized-fix@9.23.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.25.4
+      clsx: 1.2.1
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-lifecycles-compat: 3.0.4
+
+  react-virtualized-tree-fix@3.5.1(react-dom@18.3.1(react@18.3.1))(react-virtualized@9.22.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
     dependencies:
       classnames: 2.5.1
       lodash: 4.17.21

@@ -1,12 +1,11 @@
-import Tree , { FlattenedNode } from 'react-virtualized-tree';
-
+import Tree , { FlattenedNode } from 'react-virtualized-tree-fix';
 import classNames from 'classnames';
 
 
 import {Nodes} from './treeData.ts'
 import React, {useEffect} from "react";
 import { isNodesEquivalent } from '@babel/types';
-import renderNode, { defaultRenderers } from '@/views/Home/components/TreeContainer/VirtualizedTree/renderNode.tsx';
+import renderNode, { defaultRenderers } from './renderNode.tsx';
 
 import css from './VirtualizedTree.module.css'
 
@@ -84,6 +83,9 @@ function VirtualizedTree({ nodes, onChange, highlightedId, onCollapse, ...action
           ...rest,
           ...actions,
         })
+       /* <div>
+          {node.name}
+        </div>*/
       }
     </Tree>
   )

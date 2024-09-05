@@ -1,2 +1,2 @@
-export { default } from './ContextMenu.tsx'
-export * from './ContextMenu.tsx'
+export { default } from './ContextMenu'
+export * from './ContextMenu'

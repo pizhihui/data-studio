@@ -3,6 +3,7 @@ import { TabsPageSubType, TabsPageType } from '@/views/Home/model.ts';
 import { ConsoleSqlOutlined, DatabaseOutlined } from '@ant-design/icons';
 import Project from '@/views/Home/Project';
 import DataSource from '@/views/Home/DataSource';
+import Databases from '@/views/Home/Databases';
 
 
 export const LeftSide: TabProp[] = [
@@ -16,7 +17,7 @@ export const LeftSide: TabProp[] = [
     key: 'database',
     icon: <DatabaseOutlined />,
     label: '数据库',
-    children: <DataSource />,
+    children: <Databases />,
   }
 ]
 

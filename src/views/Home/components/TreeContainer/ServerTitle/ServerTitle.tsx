@@ -1,8 +1,9 @@
 import { Dropdown } from 'antd';
 import React, { useCallback, useState } from 'react';
 import ContextMenu, { ContextMenuProps } from './ContextMenu';
-import css from './ServerTitle.module.css'
-import { SwitcherOutlined, ReloadOutlined, DatabaseOutlined } from '@ant-design/icons';
+// import css from './ServerTitle.less'
+import {SwitcherOutlined, ReloadOutlined, DatabaseOutlined, CloudServerOutlined} from '@ant-design/icons';
+// import { Flex } from 'reflexy';
 
 export interface ServerTitleProps extends ContextMenuProps {
   title: string;
@@ -36,20 +37,23 @@ export default function ServerTitle({
   );
 
   return (
-    <div>
-      <Dropdown overlay={<ContextMenu server={server} onContextMenuAction={onAction} />}
+    // <Flex alignItems="center" hfill>
+    <div style={{display: 'flex',alignItems: 'center', height: '100%'}}>
+      {/*<Dropdown overlay={<ContextMenu server={server} onContextMenuAction={onAction} />}
                 trigger={['contextMenu']}
                 visible={visible}
                 onVisibleChange={setVisible}>
-        <span className={css.dropdown}>
+        <Flex grow alignItems="center" className={css.dropdown}>
           <DatabaseOutlined />
+          <CloudServerOutlined />
           <div className={css.title}>{title}</div>
-        </span>
-      </Dropdown>
-      <span>
-        <ReloadOutlined title="Reload" onClick={onReload} className={css.action} />
-        <SwitcherOutlined title="Collapse" onClick={collapse} className={css.action} />
-      </span>
+        </Flex>
+      </Dropdown>*/}
+      {/*<Flex justifyContent="flex-end" onDoubleClick={preventPropagation}>*/}
+      <div style={{display: 'flex', justifyContent: 'flex-end'}} onDoubleClick={preventPropagation}>
+        <ReloadOutlined title="Reload" onClick={onReload} className={'action'} />
+        <SwitcherOutlined title="Collapse" onClick={collapse} className={'action'} />
+      </div>
     </div>
   )
 
