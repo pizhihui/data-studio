@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import Error403 from '@/views/403'
 import Error404 from '@/views/404'
 import LayoutContainer from '@/components/Layout';
+import LayoutContainer2 from '@/components/Layout2/Layout2.tsx';
 import AuthLoader from '@/router/AuthLoader.ts';
 
 import Home from '@/views/Home';
@@ -20,7 +21,7 @@ export const routes: RouteObject[] = [
   },
   {
     id: '/layout',
-    element: <LayoutContainer />,
+    element: <LayoutContainer2 />,
     loader: AuthLoader,
     children: [
       {

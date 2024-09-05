@@ -25,7 +25,6 @@ const Home: React.FC = () => {
       border: '1px solid #d5d5d5',
       borderRadius: 3,
       margin: 10
-
     }}>
       {/* 第一部分 */}
       <div style={{
@@ -60,7 +59,7 @@ const Home: React.FC = () => {
         {/*<TreeAntd />*/}
       </div>
       {/* 第三部分 */}
-      <div style={{ flex: 2 }}>Pane 3</div>
+      <div style={{ flex: 1 }}>Pane 3</div>
     </Split>
   )
 }
