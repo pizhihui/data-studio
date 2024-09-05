@@ -15,3 +15,8 @@ export enum TabsPageSubType {
   flinkJar = 'FlinkJar',
   None = ''
 }
+export type TreeVo = {
+  name: string;
+  value: string;
+  children?: TreeVo[];
+};

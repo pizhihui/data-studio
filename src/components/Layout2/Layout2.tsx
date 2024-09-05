@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Flex, Layout, Menu, MenuProps, Tabs } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -22,6 +22,14 @@ const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
 const Layout2 = () => {
 
 
+  const [currentKey, setCurrentKey] = useState<string>('project')
+
+
+  const updateSelectLeftKey = (item: string) => {
+    console.log('current key', item)
+    setCurrentKey(item)
+  }
+
   const LeftTopMenu = (
     <Menu
       mode='inline'
@@ -36,10 +44,9 @@ const Layout2 = () => {
         borderBlockStart: `1px solid #eee`,
         borderInlineEnd: `1px solid #eee`
       }}
-
+      onClick={(item) => updateSelectLeftKey(item.key)}
     />
   );
-
 
   const refObject = useRef<HTMLDivElement>(null);
 
@@ -55,6 +62,7 @@ const Layout2 = () => {
             defaultSelectedKeys={['2']}
             items={items1}
             style={{flex: 1, minWidth: 0}}
+
           />
         </Flex>
       </Header>
@@ -71,7 +79,9 @@ const Layout2 = () => {
            minSize={150}
            className={'split-pane'}
          >
-           <div>xxxxxxxxxxxx</div>
+           <div>
+             <Tabs activeKey={currentKey} items={LeftSide} tabBarStyle={{ display: 'none' }} />
+           </div>
            <SplitPane
              split={'horizontal'}
              defaultSizes={[100, 500]}
