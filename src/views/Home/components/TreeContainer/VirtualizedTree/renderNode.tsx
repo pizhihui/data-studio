@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { RendererProps, selectors } from 'react-virtualized-tree-fix';
 // import { Flex } from 'reflexy';
-import { TypedNode } from '@/store/Tree/TreeStore';
+import { TypedNode } from '@/store/modules/TreeStore.ts';
 import css from './VirtualizedTree.module.css';
 import classNames from 'classnames';
 import ServerTitle, {ServerTitleProps, ServerContextMenuProps} from '../ServerTitle/';

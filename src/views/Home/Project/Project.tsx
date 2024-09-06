@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import JobTree from '@/views/Home/Project/JobTree';
 import { Key } from '@ant-design/pro-components';
+import { useAppDispatch } from '@/store';
+import { getListFileTrees } from '@/views/Home/Project/store/project.ts';
 
 
 const Project: React.FC = () => {
@@ -22,6 +24,12 @@ const Project: React.FC = () => {
   const handleSelectKeyChange = (keys: Key[]) => {
     console.log(keys)
   }
+  const dispatch = useAppDispatch()
+
+  useEffect(() =>{
+    console.log('project effect aaaaaa')
+    dispatch(getListFileTrees('file:///data/linkis/users/hadoop'))
+  }, [])
 
 
   return (

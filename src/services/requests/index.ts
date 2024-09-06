@@ -6,6 +6,7 @@ import { message } from '@/utils/AntdGlobal.tsx';
 const hyRequest = new HYRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
+  withCredentials: true,
   interceptors: {
     requestSuccessFn: (config) => {
       return config
@@ -13,9 +14,9 @@ const hyRequest = new HYRequest({
     responseSuccessFn: (res) => {
       console.log('response success res......', res)
       const status = res.status
-      if(status === 0) {
-        message.error(res.message)
-        return Promise.reject(res)
+      if(status !== 0) {
+        message.error('result: ' + res.message)
+        return Promise.reject(res.data)
       }
       return res.data;
     }

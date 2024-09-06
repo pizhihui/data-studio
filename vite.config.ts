@@ -69,6 +69,9 @@ export default defineConfig({
         target: 'https://hl-data-studio.juziboss.com',
         changeOrigin: true,
         secure: false,
+        headers: {
+          'Cookie': 'linkis_user_session_ticket_id_v1=YvF7lwB5IXyNnnxRs22LgPSqUTaT41ZetJM7NqUD+BM='
+        }
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
     }

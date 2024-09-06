@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Flex, Layout, Menu, MenuProps, Tabs } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -10,6 +10,8 @@ import { Pane } from 'react-split-pane';
 import { ProCard } from '@ant-design/pro-components';
 import DirectoryTree from 'antd/es/tree/DirectoryTree';
 import { LeftSide } from '@/views/Home/route.tsx';
+import { shallowEqualApp, useAppDispatch, useAppSelector } from '@/store';
+import { updateSelectRightKey } from '@/store/modules/LeftContainer.ts';
 const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
   key,
   label: `nav ${key}`,
@@ -17,18 +19,24 @@ const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
 
 
 
-
-
 const Layout2 = () => {
 
+  const dispatch = useAppDispatch()
+  const { selectKey } = useAppSelector((state) => ({
+    selectKey: state.leftContainer.selectKey
+  }), shallowEqualApp)
 
   const [currentKey, setCurrentKey] = useState<string>('project')
 
-
-  const updateSelectLeftKey = (item: string) => {
-    console.log('current key', item)
-    setCurrentKey(item)
+  const handleMenuClick = (item: string) => {
+    // console.log('current key', item)
+    // setCurrentKey(item)
+    dispatch(updateSelectRightKey(item))
   }
+
+  useEffect(() => {
+    console.log('select key: ', selectKey)
+  }, [selectKey])
 
   const LeftTopMenu = (
     <Menu
@@ -44,7 +52,7 @@ const Layout2 = () => {
         borderBlockStart: `1px solid #eee`,
         borderInlineEnd: `1px solid #eee`
       }}
-      onClick={(item) => updateSelectLeftKey(item.key)}
+      onClick={(item) => handleMenuClick(item.key)}
     />
   );
 
@@ -80,7 +88,7 @@ const Layout2 = () => {
            className={'split-pane'}
          >
            <div>
-             <Tabs activeKey={currentKey} items={LeftSide} tabBarStyle={{ display: 'none' }} />
+             <Tabs activeKey={selectKey} items={LeftSide} tabBarStyle={{ display: 'none' }} />
            </div>
            <SplitPane
              split={'horizontal'}

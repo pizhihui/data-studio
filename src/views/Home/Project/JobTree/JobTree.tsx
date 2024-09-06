@@ -109,7 +109,7 @@ const JobTree: React.FC<TreeProps> = (props) => {
   };
 
   return (
-    <Space direction='vertical' size={8}>
+    <Space direction='vertical' size={0}>
       <Search
         style={{ margin: '8px 0px', width: leftContainerWidth - 60 }}
         placeholder='请输入关键字搜索'
