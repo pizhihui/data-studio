@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Tabs } from 'antd';
 import { ConsoleSqlOutlined } from '@ant-design/icons';
-import TabPaneCnt from '@/views/DataStudio/TabPaneCnt'
+import TabPaneCnt from '@/pages/DataStudio/TabPaneCnt'
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 

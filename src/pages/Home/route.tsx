@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-import { TabsPageSubType, TabsPageType } from '@/views/Home/model.ts';
+import { TabsPageSubType, TabsPageType } from '@/pages/Home/model.ts';
 import { ConsoleSqlOutlined, DatabaseOutlined } from '@ant-design/icons';
-import Project from '@/views/Home/Project';
-import DataSource from '@/views/Home/DataSource';
-import Databases from '@/views/Home/Databases';
+import Project from '@/pages/Home/Project';
+import DataSource from '@/pages/Home/DataSource';
+import Databases from '@/pages/Home/Databases';
 
 
 export const LeftSide: TabProp[] = [

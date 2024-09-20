@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import JobTree from '@/views/Home/Project/JobTree';
+import JobTree from '@/pages/Home/Project/JobTree';
 import { Key } from '@ant-design/pro-components';
 import { useAppDispatch } from '@/store';
-import { getListFileTrees } from '@/views/Home/Project/store/project.ts';
+import { getListFileTrees } from '@/pages/Home/Project/store/project.ts';
 
 
 const Project: React.FC = () => {

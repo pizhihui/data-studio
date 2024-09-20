@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { listFileTrees } from '@/views/Home/Project/service/project.ts';
+import { listFileTrees } from '@/pages/Home/Project/service/project.ts';
 import { createAppSlice } from '@/store/createAppSlice.ts';
 import { RootState } from '@/store'
 

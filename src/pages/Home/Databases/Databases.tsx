@@ -1,6 +1,6 @@
 
 
-import TreeContainer from '@/views/Home/components/TreeContainer';
+import TreeContainer from '@/pages/Home/components/TreeContainer';
 
 const Databases = () => {
   return (

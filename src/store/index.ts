@@ -2,7 +2,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux"
 import { configureStore, ThunkAction, Action, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit'
 import counterReducer from './modules/Counter'
 import LeftContainerReducer from '@/store/modules/LeftContainer.ts';
-import projectsReducer from '@/views/DataStudio/PaneLeft/store/project.ts';
+import projectsReducer from '@/pages/DataStudio/PaneLeft/store/project.ts';
 
 
 export const store = configureStore({

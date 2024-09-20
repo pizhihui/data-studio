@@ -3,13 +3,13 @@ import { Flex, Layout, Menu, MenuProps, Tabs } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 import { ButtonStyle, HeaderSticky, RootVh } from './styles'
-import Home from '@/views/Home';
+import Home from '@/pages/Home';
 
 import { SplitPane } from '@andrewray/react-multi-split-pane';
 import { Pane } from 'react-split-pane';
 import { ProCard } from '@ant-design/pro-components';
 import DirectoryTree from 'antd/es/tree/DirectoryTree';
-import { LeftSide } from '@/views/Home/route.tsx';
+import { LeftSide } from '@/pages/Home/route.tsx';
 import { shallowEqualApp, useAppDispatch, useAppSelector } from '@/store';
 import { updateSelectRightKey } from '@/store/modules/LeftContainer.ts';
 const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({

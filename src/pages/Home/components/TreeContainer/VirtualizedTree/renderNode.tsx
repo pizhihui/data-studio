@@ -11,7 +11,7 @@ import { Databases } from '@/services';
 import TableTitle, {TableContextMenuProps} from "../TableTitle";
 import {CommandRowProps} from "../CommandRowTitle";
 import ActionTitle, { ColumnTitleProps } from '../ColumnTitle';
-import DbTitle from "@/views/Home/components/TreeContainer/DbTitle";
+import DbTitle from "@/pages/Home/components/TreeContainer/DbTitle";
 
 
 

@@ -6,7 +6,7 @@ import { getListFileTrees } from './store/project.ts'
 import { MenuItemType } from 'antd/es/menu/interface'
 import { MenuInfo } from 'rc-menu/es/interface';
 import RightContextMenu from '@/components/RightContextMenu'
-import { FOLDER_RIGHT_MENU, JOB_RIGHT_MENU } from '@/views/DataStudio/PaneLeft/constants.tsx'
+import { FOLDER_RIGHT_MENU, JOB_RIGHT_MENU } from '@/pages/DataStudio/PaneLeft/constants.tsx'
 
 import type { MenuProps } from 'antd';
 

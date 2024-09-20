@@ -1,12 +1,12 @@
 import Splitter from '@/components/Splitter';
 import React from 'react';
-import LeftContainer from '@/views/Home/components/LeftContainer';
-import MiddleContainer from '@/views/Home/components/MiddleContainer';
+import LeftContainer from '@/pages/Home/components/LeftContainer';
+import MiddleContainer from '@/pages/Home/components/MiddleContainer';
 import Split from '@uiw/react-split';
 
 import './index.css'
-import TreeContainer from "@/views/Home/components/TreeContainer";
-import TreeAntd from "src/views/Home/components/TreeContainer/TreeAntd";
+import TreeContainer from "@/pages/Home/components/TreeContainer";
+import TreeAntd from "src/pages/Home/components/TreeContainer/TreeAntd";
 
 const Home: React.FC = () => {
   return (

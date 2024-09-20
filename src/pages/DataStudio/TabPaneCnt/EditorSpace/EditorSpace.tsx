@@ -1,9 +1,9 @@
 import React from 'react';
 import { SplitPane } from '@andrewray/react-multi-split-pane'
-import PaneLeft from '@/views/DataStudio/PaneLeft'
-import PaneRight from '@/views/DataStudio/PaneRight'
+import PaneLeft from '@/pages/DataStudio/PaneLeft'
+import PaneRight from '@/pages/DataStudio/PaneRight'
 import { Flex } from 'antd'
-import DatabaseTree from '@/views/DataStudio/DatabaseTree'
+import DatabaseTree from '@/pages/DataStudio/DatabaseTree'
 
 const EditorSpace = () => {
   return (

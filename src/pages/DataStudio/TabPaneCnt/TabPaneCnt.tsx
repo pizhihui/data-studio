@@ -1,6 +1,6 @@
 import React from 'react';
-import ConnectionBar from '@/views/DataStudio/TabPaneCnt/ConnectionBar'
-import EditorSpace from '@/views/DataStudio/TabPaneCnt/EditorSpace'
+import ConnectionBar from '@/pages/DataStudio/TabPaneCnt/ConnectionBar'
+import EditorSpace from '@/pages/DataStudio/TabPaneCnt/EditorSpace'
 
 const TabPaneCnt = () => {
   return (

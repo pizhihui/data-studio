@@ -1,8 +1,8 @@
 import React from 'react';
 import { SplitPane } from '@andrewray/react-multi-split-pane';
 import { Flex } from 'antd';
-import PaneLeft from '@/views/DataStudio/PaneLeft';
-import PaneRight from '@/views/DataStudio/PaneRight';
+import PaneLeft from '@/pages/DataStudio/PaneLeft';
+import PaneRight from '@/pages/DataStudio/PaneRight';
 
 const DataStudio = () => {
   return (

@@ -5,11 +5,11 @@ import { FileImageFilled } from '@ant-design/icons'
 const { DirectoryTree } = Tree;
 import { Key } from '@ant-design/pro-components';
 import { ItemType } from 'rc-menu/es/interface';
-import { TreeVo } from '@/views/Home/model.ts';
+import { TreeVo } from '@/pages/Home/model.ts';
 import type { ButtonType } from 'antd/es/button/buttonHelpers';
 import { CodeTwoTone, SortAscendingOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@/store'
-import { getListFileTrees } from '@/views/DataStudio/PaneLeft/store/project.ts'
+import { getListFileTrees } from '@/pages/DataStudio/PaneLeft/store/project.ts'
 import { PythonSvg } from '@/components/Icons/CodeLanguageIcon.tsx'
 import { ClickHouseIcons, SQLIcons } from '@/components/Icons/DBIcons.tsx'
 
