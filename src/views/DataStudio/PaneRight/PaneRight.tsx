@@ -55,6 +55,7 @@ const PaneRight = () => {
   return (
     <>
       <Tabs
+        rootClassName={'data-studio-tabs'}
         hideAdd
         defaultActiveKey="1"
         type="editable-card"

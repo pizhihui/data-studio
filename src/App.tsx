@@ -25,15 +25,16 @@ function App() {
       <ConfigProvider
         theme={{
           token: {
+            motion: false,
             // colorBgContainer: '#f6ffed',
             "fontSize": 14,
             "borderRadius": 2,
             "wireframe": false,
-            "colorPrimary": "#1DA57A",   // #1DA57A  #13c2c2  #71c462
+            "colorPrimary": "#1969c3",   // #1DA57A  #13c2c2  #71c462 #1969c3
             "colorInfo": "#13c2c2",
             "colorSuccess": "#a0d911",
             "colorWarning": "#eb2f96",
-            "colorError": "#fa541c",
+            "colorError": "#c12b1a",       // #c12b1a #fa541c
             "sizeUnit": 4,
             "sizeStep": 4,
           },
