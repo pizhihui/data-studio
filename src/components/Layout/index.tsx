@@ -8,7 +8,6 @@ import { useStore } from '@/store'
 import css from './index.css'
 
 // @ts-ignore
-import logo from '@/assets/images/hulianLogo.png'
 import { User } from '@/services/types/api';
 
 const { Header, Content, Footer } = Layout;
@@ -116,7 +115,7 @@ const LayoutContainer: React.FC = () => {
       <Header style={{ display: 'flex', alignItems: 'center' }}>
         <div className={css.headerleft}>
           <div className={css.headerleftlogo}>
-            <img className={css.headerleftlogoimg} src={logo} alt=""/>
+            logoooooooo
           </div>
         </div>
         <div className={css.headermenu}>

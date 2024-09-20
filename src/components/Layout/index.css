@@ -7,8 +7,10 @@
 
 .headerleft {
 }
+
 .headermenu {
 }
+
 .headerright {
   margin-left: auto;
   cursor: pointer;
@@ -16,7 +18,8 @@
 
 
 .headerleftlogo {
-   display: flex;
+  color: #fff;
+  display: flex;
   height: 64px;
   padding: 12px 10px 8px 10px;
   flex-direction: row;
