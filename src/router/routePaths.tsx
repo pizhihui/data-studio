@@ -1,3 +1,4 @@
+import React, { lazy } from 'react'
 import LoginContainer from '@/components/Login';
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
 import Error403 from '@/views/403'
@@ -6,32 +7,38 @@ import LayoutContainer from '@/components/Layout';
 import LayoutContainer2 from '@/components/Layout2/Layout2.tsx';
 import AuthLoader from '@/router/AuthLoader.ts';
 
-import Home from '@/views/Home';
-import Welcome from '@/views/Welcome';
+const Home = lazy(() => import('@/views/Home'))
+const Welcome = lazy(() => import('@/views/Welcome'))
+const DataStudio = lazy(() => import('@/views/DataStudio'))
 
 
 export const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to='/home' />
+    element: <Navigate to='/welcome' />
   },
   {
     path: '/login',
     element: <LoginContainer />
   },
   {
-    id: '/layout',
-    element: <LayoutContainer2 />,
+    // id: '/layout',
+    path: '/',
+    element: <LayoutContainer />,
     loader: AuthLoader,
     children: [
       {
-        path: '/Welcome',
+        path: 'welcome',
         element: <Welcome />
       },
       {
-        path: '/Home',
+        path: 'home',
         element: <Home />
       },
+      {
+        path: 'datastudio',
+        element: <DataStudio />
+      }
     ]
   },
   {

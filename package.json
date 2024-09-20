@@ -15,6 +15,7 @@
     "@ant-design/pro-components": "^2.7.15",
     "@emotion/css": "^11.13.0",
     "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@reduxjs/toolkit": "^2.2.7",
     "@uiw/react-split": "^5.9.3",
     "@vscode/codicons": "^0.0.36",

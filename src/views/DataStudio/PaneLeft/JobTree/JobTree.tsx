@@ -1,14 +1,17 @@
 import Search from 'antd/es/input/Search';
 import { Button, Dropdown, Empty, Space, Tree, MenuProps } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { FileImageFilled } from '@ant-design/icons'
 const { DirectoryTree } = Tree;
 import { Key } from '@ant-design/pro-components';
 import { ItemType } from 'rc-menu/es/interface';
 import { TreeVo } from '@/views/Home/model.ts';
 import type { ButtonType } from 'antd/es/button/buttonHelpers';
 import { CodeTwoTone, SortAscendingOutlined } from '@ant-design/icons';
-import { useAppSelector } from '@/store'
-import { getListFileTrees } from '@/views/Home/Project/store/project.ts'
+import { useAppDispatch, useAppSelector } from '@/store'
+import { getListFileTrees } from '@/views/DataStudio/PaneLeft/store/project.ts'
+import { PythonSvg } from '@/components/Icons/CodeLanguageIcon.tsx'
+import { ClickHouseIcons, SQLIcons } from '@/components/Icons/DBIcons.tsx'
 
 /**
  * props
@@ -31,27 +34,23 @@ const TreeData = [
     title: 'test1',
     id: 1,
     key: 'key1',
-    value: 'value1',
-    children: [
-      {
-        isLeaf: false,
-        name: 'test1',
-        parentId: 1,
-        label: 'label1',
-        icon: <CodeTwoTone />,
-        title: 'test1',
-        id: 1,
-        key: 'key1',
-        value: 'value1',
-      }
-    ]
+    value: 'value1'
   }
 ]
+
+export type JobTree = {
+  name: string
+  parentPath: string
+  path: string
+  properties: any
+  children: JobTree[]
+}
 
 
 const JobTree: React.FC<TreeProps> = (props) => {
 
   const {
+    projectData,
     // project: { data: projectData, expandKeys, selectKey },
     // catalogueSortType: { data: catalogueSortTypeData },
     selectCatalogueSortTypeData,
@@ -62,13 +61,9 @@ const JobTree: React.FC<TreeProps> = (props) => {
     onRightClick,
     selectKeyChange,
     onExpand,
-    dispatch,
     taskOwnerLockingStrategy,
     users
   } = props;
-
-
-  const {projects} = useAppSelector(state => state.projects.projects)
 
   const [searchValue, setSearchValueValue] = useState('');
   const [sortState, setSortState] = useState<{
@@ -82,12 +77,61 @@ const JobTree: React.FC<TreeProps> = (props) => {
     TreeData
   );
 
+  const { projects } = useAppSelector(state => state.projects)
+  const dispatch = useAppDispatch()
+
+
+
   useEffect(() => {
-    console.log('treeelist........', projects)
+    console.log('job tree use effect.......')
+    dispatch(getListFileTrees({path: 'file:///data/linkis/users/hadoop'}))
+  }, []);
+
+  useEffect(() => {
+    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxx:', projects)
     setData(
-      TreeData
+      buildProjectTree(projects)
     );
-  }, [searchValue, taskOwnerLockingStrategy]);
+  }, [projects, searchValue, taskOwnerLockingStrategy]);
+
+  function buildProjectTree(tree: JobTree) {
+    if (!tree ) {
+      return []
+    }
+    const childrenTrees = tree.children?.map(item => {
+      return {
+        isLeaf: false,
+        name: item.name,
+        parentId: -1,
+        label: item.name,
+        icon: item.name.indexOf('.')!=-1?<Space size={'small'}><SQLIcons /></Space>:null,
+        value: item.name,
+        path: '',
+        type: '',
+        title: item.name,
+        fullInfo: item,
+        key: item.name,
+        id: item.name,
+        taskId: item.name,
+        children: []
+      }
+    })
+    return [{
+      isLeaf: false,
+      name: tree.name,
+      parentId: -1,
+      label: tree.name,
+      value: tree.name,
+      path: '',
+      type: '',
+      title: tree.name,
+      fullInfo: tree,
+      key: tree.name,
+      id: tree.name,
+      taskId: tree.name,
+      children: childrenTrees
+    }]
+  }
 
   const onChangeSearch = (e: any) => {
     let { value } = e.target;
@@ -128,7 +172,7 @@ const JobTree: React.FC<TreeProps> = (props) => {
   };
 
   return (
-    <Space direction='vertical' size={0}>
+    <Space direction='vertical' size={0} >
       <Search
         style={{ margin: '8px 0px', width: leftContainerWidth - 60 }}
         placeholder='请输入关键字搜索'
@@ -148,7 +192,7 @@ const JobTree: React.FC<TreeProps> = (props) => {
         <Button icon={<SortAscendingOutlined />} type={sortState.sortIconType}></Button>
       </Dropdown>*/}
       <DirectoryTree
-        style={{ ...style, overflowY: 'auto' }}
+        style={{ ...style, overflowY: 'auto',height: '100vh' }}
         className={'treeList'}
         onSelect={(_, info) => onNodeClick(info)}
         onRightClick={onRightClick}

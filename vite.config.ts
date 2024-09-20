@@ -10,8 +10,6 @@ import { createRequire } from 'node:module'
 // pnpm install @types/node -D
 import { fileURLToPath, URL } from 'node:url'
 
-import { patchCssModules } from 'vite-css-modules'
-
 
 const WRONG_CODE = `import { bpfrpt_proptype_WindowScroller } from "../WindowScroller.js";`;
 export function reactVirtualized(): Plugin {
@@ -70,7 +68,7 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         headers: {
-          'Cookie': 'linkis_user_session_ticket_id_v1=YvF7lwB5IXyNnnxRs22LgPSqUTaT41ZetJM7NqUD+BM='
+          'Cookie': 'linkis_user_session_ticket_id_v1=M7UZXQP9Ld0u5F6Lt8KErYS6uEQQ/nsJ2HLiVea4FcQ='
         }
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },

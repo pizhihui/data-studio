@@ -1,20 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { listFileTrees } from '@/views/Home/Project/service/project.ts';
 import { createAppSlice } from '@/store/createAppSlice.ts';
-import { RootState } from '@/store'
+import { IThunkState, RootState } from '@/store'
 
-interface IThunkState {
-  state: RootState
-}
+
 
 export const getListFileTrees = createAsyncThunk<
-  void ,
+  void,
   {path: string},
-  IThunkState
+  {state: IThunkState}
 >(
   'fetchdata',
   (path, {dispatch}) => {
-    console.log('请求接口 xxxx, path::::::', path)
     listFileTrees('file:///data/linkis/users/hadoop').then(res => {
       console.log('resuuuuuult', res)
       dispatch(changeListFiles(res.dirFileTrees))
