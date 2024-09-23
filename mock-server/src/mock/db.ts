@@ -47,7 +47,7 @@ export const dbs = [
               "tableName": "dim_month_last_day",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1725422598000,
               "lastAccessAt": 1725422598000
             },
@@ -55,7 +55,7 @@ export const dbs = [
               "tableName": "dim_pub_channel_fd",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1724399871000,
               "lastAccessAt": 1724399871000
             },
@@ -63,7 +63,7 @@ export const dbs = [
               "tableName": "dim_pub_user_fd",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1723688425000,
               "lastAccessAt": 1723688425000
             },
@@ -71,7 +71,7 @@ export const dbs = [
               "tableName": "dim_user_credit_detail_fd",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1723864657000,
               "lastAccessAt": 1723864657000
             },
@@ -79,7 +79,7 @@ export const dbs = [
               "tableName": "f_fintech_ods_risk_model_config_model_run_record_dd",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1726796869000,
               "lastAccessAt": 1726796869000
             },
@@ -87,7 +87,7 @@ export const dbs = [
               "tableName": "t_ods_fms_repay_plan_v2_df",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1726741072000,
               "lastAccessAt": 1726741072000
             },
@@ -95,7 +95,7 @@ export const dbs = [
               "tableName": "t_ods_rms_third_yhx_credit_authorization_pbc_dd",
               "isView": false,
               "databaseName": "znzz_fintech_dim",
-              "createdBy": "RAM$jzfq-prd@juzifenqi.com:znzz_fintech_ak",
+              "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1726765204000,
               "lastAccessAt": 1726765204000
             }
@@ -120,6 +120,76 @@ export const dbs = [
               "columnType": "string",
               "columnComment": "",
               "partitioned": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    // ?pageSize=100&currentPage=1
+    url: '/api/rest_j/v1/data-source-manager/info',
+    method: 'get',
+    response() {
+      return {
+        "method": "/api/data-source-manager/info",
+        "status": 0,
+        "message": "OK",
+        "data": {
+          "totalPage": 3,
+          "queryList": [
+            {
+              "id": 3,
+              "dataSourceName": "实时库",
+              "dataSourceTypeId": 9,
+              "createSystem": "Linkis",
+              "createTime": 1724148411000,
+              "modifyTime": 1724378615000,
+              "modifyUser": "hadoop",
+              "createUser": "hadoop",
+              "versionId": 4,
+              "publishedVersionId": 4,
+              "expire": false,
+              "dataSourceType": {
+                "id": "3",
+                "name": "postgresql",
+                "layers": 0
+              }
+            },
+            {
+              "id": 2,
+              "dataSourceName": "离线库",
+              "dataSourceTypeId": 19,
+              "createSystem": "Linkis",
+              "createTime": 1724067051000,
+              "modifyTime": 1724333243000,
+              "modifyUser": "hadoop",
+              "createUser": "hadoop",
+              "versionId": 6,
+              "publishedVersionId": 6,
+              "expire": false,
+              "dataSourceType": {
+                "id": "2",
+                "name": "odps",
+                "layers": 0
+              }
+            },
+            {
+              "id": 1,
+              "dataSourceName": "mysq-meta-linkis",
+              "dataSourceTypeId": 5,
+              "createSystem": "Linkis",
+              "createTime": 1724048034000,
+              "modifyTime": 1724048033000,
+              "createUser": "hadoop",
+              "versionId": 1,
+              "publishedVersionId": 1,
+              "expire": true,
+              "dataSourceType": {
+                "id": "1",
+                "name": "mysql",
+                "layers": 0
+              }
             }
           ]
         }
