@@ -1,3 +1,7 @@
+import Mock from 'mockjs'
+
+const Random = Mock.Random
+
 export const tasks = [
   {
     url: '/api/rest_j/v1/entrance/execute',
@@ -162,32 +166,32 @@ export const tasks = [
             {
               "dataType": "int",
               "comment": "",
-              "columnName": "user_id"
+              "columnName": "f_col1"
             },
             {
               "dataType": "string",
               "comment": "",
-              "columnName": "id_no_des"
+              "columnName": "f_col2"
             },
             {
               "dataType": "int",
               "comment": "",
-              "columnName": "channel_id"
+              "columnName": "f_col3"
             },
             {
               "dataType": "int",
               "comment": "",
-              "columnName": "if_has_bal_this_channel"
+              "columnName": "f_col4"
             },
             {
               "dataType": "int",
               "comment": "",
-              "columnName": "if_has_bal_ours"
+              "columnName": "f_col5"
             },
             {
               "dataType": "int",
               "comment": "",
-              "columnName": "if_has_bal_api"
+              "columnName": "f_col6"
             },
             {
               "dataType": "string",
@@ -201,8 +205,8 @@ export const tasks = [
           "type": "2",
           "fileContent": [
             [
-              "230812045",
-              "+++euq14bzuKLtN8e9IvFreD7wWaE9BKTbsYhwdSnVg=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -210,8 +214,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "223854617",
-              "++Bx1ophg42PqNHurQRHciHWo1D1R3bztaDmHlUzta4=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -219,8 +223,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "225004158",
-              "++n3dB9y6P8w0IXZ4N51ctNP/ZMHsiXOM4Th+P659B0=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -228,8 +232,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "183786944",
-              "++ozd+YBZK29DtmQBukuLzQv405pCvPr4hlhSghirzI=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "209",
               "1",
               "1",
@@ -237,8 +241,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "224161533",
-              "++sjWR2+WAQjQ4rjW5i+9+ihaXR4tyUURImyccsI+Nw=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -246,8 +250,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "222693775",
-              "++taD9xim7gqRoea+sGVOTEsPBTupSWwedvh1GWICGY=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "0",
               "0",
@@ -255,8 +259,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "225926847",
-              "+/2lVgzEY4iccmuuxsgGwP7Ds7nk8B4hGFHX7V2z+r4=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -264,8 +268,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "227706304",
-              "+/AEYHzePfd2GvGWgeuTvGmxO3cJc/xH9ectIb79rbI=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -273,8 +277,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "221499685",
-              "+/dhHJd8S18003jAPGy2X2NGKOXDOWllCXzLgwCrHHY=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
@@ -282,8 +286,8 @@ export const tasks = [
               "2024-09-05"
             ],
             [
-              "223528668",
-              "+/uWA540VvHg17hCGh0q6XugDyVAKmDdKjlnobbXCNI=",
+              Random.string('number',8, 9),
+              Random.word(20, 40),
               "227",
               "1",
               "1",
