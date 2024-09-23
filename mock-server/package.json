@@ -12,11 +12,13 @@
   "description": "",
   "dependencies": {
     "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
     "koa-router": "^13.0.1",
     "mockjs": "^1.1.0"
   },
   "devDependencies": {
     "@types/koa": "^2.15.0",
+    "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-router": "^7.4.8",
     "@types/mockjs": "^1.0.10",
     "@types/node": "^22.5.5",
