@@ -1,5 +1,7 @@
 
+import Mock from 'mockjs'
 
+const Random = Mock.Random
 
 export const dbs = [
   {
@@ -13,19 +15,19 @@ export const dbs = [
         "data": {
           "dbs": [
             {
-              "dbName": "znzz_hdw_ods"
+              "dbName": "znzz_pipi_ods"
             },
             {
-              "dbName": "znzz_fintech_dws"
+              "dbName": "znzz_pipi_dws"
             },
             {
-              "dbName": "znzz_fintech_dwd"
+              "dbName": "znzz_pipi_dwd"
             },
             {
-              "dbName": "znzz_fintech_dim"
+              "dbName": "znzz_pipi_dim"
             },
             {
-              "dbName": "znzz_fintech_ads"
+              "dbName": "znzz_pipi_ads"
             }
           ]
         }
@@ -44,57 +46,57 @@ export const dbs = [
         "data": {
           "tables": [
             {
-              "tableName": "dim_month_last_day",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1725422598000,
               "lastAccessAt": 1725422598000
             },
             {
-              "tableName": "dim_pub_channel_fd",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1724399871000,
               "lastAccessAt": 1724399871000
             },
             {
-              "tableName": "dim_pub_user_fd",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1723688425000,
               "lastAccessAt": 1723688425000
             },
             {
-              "tableName": "dim_user_credit_detail_fd",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1723864657000,
               "lastAccessAt": 1723864657000
             },
             {
-              "tableName": "f_fintech_ods_risk_model_config_model_run_record_dd",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1726796869000,
               "lastAccessAt": 1726796869000
             },
             {
-              "tableName": "t_ods_fms_repay_plan_v2_df",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1726741072000,
               "lastAccessAt": 1726741072000
             },
             {
-              "tableName": "t_ods_rms_third_yhx_credit_authorization_pbc_dd",
+              "tableName": "t_dim_" + Random.word(10,20),
               "isView": false,
-              "databaseName": "znzz_fintech_dim",
+              "databaseName": "znzz_pipi_dim",
               "createdBy": "RAM$pipi-prod@pipi.163.com:pipi_znzz_zk",
               "createdAt": 1726765204000,
               "lastAccessAt": 1726765204000
@@ -116,7 +118,13 @@ export const dbs = [
         "data": {
           "columns": [
             {
-              "columnName": "mob_date",
+              "columnName": "f_col1",
+              "columnType": "string",
+              "columnComment": "",
+              "partitioned": false
+            },
+            {
+              "columnName": "f_col2",
               "columnType": "string",
               "columnComment": "",
               "partitioned": false
@@ -140,7 +148,7 @@ export const dbs = [
           "queryList": [
             {
               "id": 3,
-              "dataSourceName": "实时库",
+              "dataSourceName": "库11111",
               "dataSourceTypeId": 9,
               "createSystem": "Linkis",
               "createTime": 1724148411000,
@@ -158,7 +166,7 @@ export const dbs = [
             },
             {
               "id": 2,
-              "dataSourceName": "离线库",
+              "dataSourceName": "库22222",
               "dataSourceTypeId": 19,
               "createSystem": "Linkis",
               "createTime": 1724067051000,
