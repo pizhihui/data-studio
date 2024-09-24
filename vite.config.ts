@@ -64,7 +64,7 @@ export default defineConfig({
     port: 8067,
     proxy: {
       '/api': {
-        target: 'https://hl-data-studio.juziboss.com',
+        target: 'http://localhost:3002',
         changeOrigin: true,
         secure: false,
         headers: {

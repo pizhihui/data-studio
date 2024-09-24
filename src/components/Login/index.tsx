@@ -6,7 +6,7 @@ import { Login } from '@/services/types/api';
 import storage from '@/utils/storage'
 import api from '@/services/api.ts';
 import React, { useState } from 'react';
-import { message } from '@/utils/AntdGlobal.tsx';
+import { message } from 'antd';
 import { sleep } from '@/utils';
 
 

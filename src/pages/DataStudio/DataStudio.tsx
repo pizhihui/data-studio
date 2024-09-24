@@ -1,10 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SplitPane } from '@andrewray/react-multi-split-pane';
 import { Flex } from 'antd';
 import PaneLeft from '@/pages/DataStudio/PaneLeft';
 import PaneRight from '@/pages/DataStudio/PaneRight';
+import { getDatabasesListService } from '@/pages/DataStudio/services/DataStudioService.ts'
+import { VIEW } from '@/pages/DataStudio/model.ts'
+import { useAppDispatch } from '@/store'
+import { updateToolContentHeightReducer } from '@/pages/DataStudio/store/DataStudioSlice.ts'
 
 const DataStudio = () => {
+
+
+  const getClientSize = () => ({
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+    contentHeight:
+      document.documentElement.clientHeight -
+      VIEW.headerNavHeight -
+      VIEW.headerHeight -
+      VIEW.footerHeight -
+      VIEW.otherHeight
+  });
+
+  useEffect(() => {
+    getDatabasesListService().then(res => {
+      console.log('获取到数据', res.dbs)
+    })
+  }, []);
+
+  const dispath = useAppDispatch()
+
+
+  const [size, setSize] = useState(getClientSize());
+
+  const onResize = () => {
+    setSize(getClientSize());
+    const isProject = false
+    // const newBottomHeight = !isProject
+    //   ? 0
+    //   : bottomContainer.selectKey === ''
+    //     ? 0
+    //     : bottomContainer.height;
+    const centerContentHeight = getClientSize().contentHeight - 0;
+    // updateCenterContentHeight(centerContentHeight);
+    // updateToolContentHeight(centerContentHeight - VIEW.leftMargin);
+    const height = centerContentHeight - VIEW.leftMargin
+    console.log('resizexxxxx', height)
+    dispath(updateToolContentHeightReducer(height))
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+    onResize();
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
     <>
       <Flex style={{height: parent.innerHeight - 55, overflow: 'auto', position: 'relative'}}>

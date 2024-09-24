@@ -6,7 +6,6 @@ import { ConfigProvider, App as AntdApp, theme } from 'antd'
 
 
 import LoginContainer from './components/Login'
-import AntdGlobal from '@/utils/AntdGlobal.tsx';
 import { RouterProvider, useRoutes } from 'react-router-dom';
 import router from '@/router/';
 
@@ -55,7 +54,6 @@ function App() {
           algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm
         }}>
         <AntdApp>
-          <AntdGlobal/>
           {/* router */}
           {/* <div className="main">{useRoutes(router)}</div> */}
           <Suspense fallback="">

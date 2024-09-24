@@ -18,7 +18,7 @@ import {
 
 type Props = ContextMenuProps;
 import type { MenuProps } from 'antd';
-import { message } from '@/utils/AntdGlobal';
+import { message } from 'antd';
 const { useToken } = theme;
 
 

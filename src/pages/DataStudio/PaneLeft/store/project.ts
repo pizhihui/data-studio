@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { listFileTrees } from '@/pages/Home/Project/service/project.ts';
 import { createAppSlice } from '@/store/createAppSlice.ts';
 import { IThunkState, RootState } from '@/store'
+import { listFileTreesService } from '@/pages/DataStudio/services/DataStudioService.ts'
 
 
 
@@ -12,8 +13,8 @@ export const getListFileTrees = createAsyncThunk<
 >(
   'fetchdata',
   (path, {dispatch}) => {
-    listFileTrees('file:///data/linkis/users/hadoop').then(res => {
-      console.log('resuuuuuult', res)
+    listFileTreesService('file:///data/linkis/users/hadoop').then(res => {
+      console.log('resuuuuuultttttt', res)
       dispatch(changeListFiles(res.dirFileTrees))
     })
   }

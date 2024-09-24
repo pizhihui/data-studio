@@ -4,7 +4,7 @@ import { showLoading, hideLoading } from './loading'
 import storage from './storage'
 import { Result } from '@/services/types/api.d.ts';
 import { message } from 'antd';
-// import { message } from '@/utils/AntdGlobal.tsx';
+// import { message } from 'antd';
 
 
 // 创建实例

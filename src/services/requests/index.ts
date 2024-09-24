@@ -1,7 +1,7 @@
 import { BASE_URL, TIME_OUT } from './config'
 import HYRequest from './request'
 // import { Result } from '@/types/api';
-import { message } from '@/utils/AntdGlobal.tsx';
+import { message } from 'antd';
 import { HYReqConfig } from '@/services/requests/request/type.ts'
 
 const hyRequest = new HYRequest({
