@@ -8,8 +8,8 @@
     "dev": "tsx app.ts",
     "dev2": "tsx examples.ts",
     "dev3": "tsx app2.ts",
-    "dev4": "tsx page-overview.ts",
-    "dev5": "tsx update-data.ts"
+    "mc-total": "tsx app/maxcompute/page-overview.ts",
+    "mc-detail": "tsx app/maxcompute/update-data.ts"
   },
   "keywords": [],
   "author": "picard",

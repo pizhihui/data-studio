@@ -1,9 +1,8 @@
 import mongoose from 'mongoose'
 import { Schema, model, connect, Model } from 'mongoose';
+import { fetchData } from '../utils/https-utils'
+import { McModel } from '../model/mc-model'
 import * as cheerio from 'cheerio'
-import { fetchData } from './https-demo'
-import { McModel } from './model'
-
 
 
 const url = 'https://www.alibabacloud.com'

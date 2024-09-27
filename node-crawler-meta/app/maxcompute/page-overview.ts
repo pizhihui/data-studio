@@ -3,8 +3,8 @@ import * as https from 'node:https'
 import * as cheerio from 'cheerio'
 import mongoose from 'mongoose'
 
-import { fetchData } from './https-demo'
-import { McModel } from './model'
+import { fetchData } from '../utils/https-utils'
+import { McModel } from '../model/mc-model'
 
 const wz = "https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-35"; //网址
 

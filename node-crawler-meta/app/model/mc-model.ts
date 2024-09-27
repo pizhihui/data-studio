@@ -16,7 +16,10 @@ const McFunctionSchema = new Schema<IMcFunc, McFuncModelType>({
   func_name: String,
   func_desc: String,
   func_link: String,
-  func_html: String
+  func_html: String,
+},{
+  // createdAt updatedAt
+  timestamps: true
 })
 export const McModel = model<IMcFunc, McFuncModelType>('mc_function', McFunctionSchema)
 
