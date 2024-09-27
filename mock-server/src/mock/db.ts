@@ -203,5 +203,106 @@ export const dbs = [
         }
       }
     }
+  },
+  {
+    url: '/api/rest_j/v1/datasource/tableInfo',
+    method: 'get',
+    response() {
+      return  {
+        "method": "/api/datasource/columns",
+        "status": 0,
+        "message": "OK",
+        "data": {
+          "comment": "表注释",
+          "createTableDDL": "CREATE EXTERNAL TABLE IF NOT EXISTS txxxxxx",
+          "creationTime": 1727176082000,
+          "displayName": "table_xxxxxx",
+          "isExternalTable": true,
+          "lastDDLTime": 1727176082000,
+          "lastModifiedTime": 1727176082000,
+          "dbName": "znz_pipi_dwd",
+          "type": "external",
+          "owner": "pipi-xxxx",
+          "nativeColumns": [
+            {"comment": "字段注释 1111", "name": "f_col1", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"},
+            {"comment": "字段注释 2222", "name": "f_col2", "type": "string"}
+          ],
+          "partitionColumns": [
+            {
+              "comment": "分区字段 11111",
+              "name": "dt",
+              "type": "string"
+            },
+            {
+              "comment": "分区字段 2222",
+              "name": "ds",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
   }
 ]
