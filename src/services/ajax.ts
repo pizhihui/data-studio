@@ -20,7 +20,7 @@ instance.interceptors.response.use(
     const resData = (res.data || {}) as ResType
     const { status, message, data, method } = resData
     // error
-    console.log('axios responsexxx', resData)
+    // console.log('axios responsexxx', resData)
     if (status !== 0) {
       if (message) {
         AntMessage.error(message)

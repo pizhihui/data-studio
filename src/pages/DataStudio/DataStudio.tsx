@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { SplitPane } from '@andrewray/react-multi-split-pane';
 import { Flex } from 'antd';
-import PaneLeft from '@/pages/DataStudio/PaneLeft';
-import PaneRight from '@/pages/DataStudio/PaneRight';
-import { getDatabasesListService } from '@/pages/DataStudio/services/DataStudioService.ts'
+import { getDbsTreeService } from '@/pages/DataStudio/services/DataStudioService.ts'
 import { VIEW } from '@/pages/DataStudio/model.ts'
 import { useAppDispatch } from '@/store'
 import { updateToolContentHeightReducer } from '@/pages/DataStudio/store/DataStudioSlice.ts'
+import ProjectPane from '@/pages/DataStudio/ProjectPane'
+import WorkbenchPane from '@/pages/DataStudio/WorkbenchPane'
 
 const DataStudio = () => {
 
@@ -23,8 +23,8 @@ const DataStudio = () => {
   });
 
   useEffect(() => {
-    getDatabasesListService().then(res => {
-      console.log('获取到数据', res.dbs)
+    getDbsTreeService().then(res => {
+      // console.log('获取到数据', res.dbs)
     })
   }, []);
 
@@ -64,8 +64,8 @@ const DataStudio = () => {
           minSize={200}
           className={'split-pane'}
         >
-          <PaneLeft />
-          <PaneRight/>
+          <ProjectPane />
+          <WorkbenchPane />
         </SplitPane>
       </Flex>
 

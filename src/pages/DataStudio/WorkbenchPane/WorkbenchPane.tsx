@@ -16,7 +16,7 @@ const defaultPanes = new Array(2).fill(null).map((_, index) => {
   };
 });
 
-const PaneRight = () => {
+const WorkbenchPane = () => {
 
   const [activeKey, setActiveKey] = useState(defaultPanes[0].key);
   const [items, setItems] = useState(defaultPanes);
@@ -72,4 +72,4 @@ const PaneRight = () => {
   );
 };
 
-export default PaneRight;
+export default WorkbenchPane;

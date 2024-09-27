@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Spin, Tree } from 'antd'
-import { CarryOutOutlined, FormOutlined } from '@ant-design/icons'
+import React, { useCallback, useEffect, useState } from 'react';
+import { Input, Space, Spin, Tree, TreeDataNode } from 'antd'
+import { CarryOutOutlined, FormOutlined, ReloadOutlined } from '@ant-design/icons'
 import SchemaTree from '@/components/DataSource/SchemaTree'
 import { useAppDispatch, useAppSelector } from '@/store'
-import { getDatabasesListService } from '@/pages/DataStudio/services/DataStudioService.ts'
+import { getDbsTreeService, getTablesTreeService } from '@/pages/DataStudio/services/DataStudioService.ts'
+import type { DataNode, Key } from 'rc-tree/lib/interface';
+import { buildSchemaTree } from '@/pages/DataStudio/functions.tsx'
+import { CircleBtn } from '@/components/CallBackButton/CircleBtn.tsx'
+
+const { DirectoryTree } = Tree
 
 const treeData: TreeDataNode[] = [
   {
@@ -95,7 +100,7 @@ const DatabaseTree = (props: any) => {
 
   useEffect(() => {
     console.log('toolContentHeight', toolContentHeight)
-    getDatabasesListService().then(res => {
+    getDbsTreeService().then(res => {
       const dbs = []
       res.dbs.map(item => (dbs.push({name: item.dbName})))
       console.log('获取到数据', res.dbs, dbs)
@@ -121,6 +126,7 @@ const DatabaseTree = (props: any) => {
   };
 
   const handleTreeNodeClick = async (keys: Key[], info: any) => {
+    console.log('clickkkkkkkkk', keys, info)
     // // 选中的key
     // dispatch({
     //   type: STUDIO_MODEL.updateDatabaseSelectKey,
@@ -150,6 +156,7 @@ const DatabaseTree = (props: any) => {
   };
 
   const handleTreeExpand = (expandedKeys: Key[]) => {
+    console.log('expand tree', expandedKeys)
     // dispatch({
     //   type: STUDIO_MODEL.updateDatabaseExpandKey,
     //   payload: expandedKeys
@@ -158,13 +165,87 @@ const DatabaseTree = (props: any) => {
 
   function handleRefreshData() {
     setIsLoadingDatabase(true)
-    getDatabasesListService().then(res => {
+    getDbsTreeService().then(res => {
       const dbs = []
       res.dbs.map(item => (dbs.push({name: item.dbName})))
       console.log('获取到数据', res.dbs, dbs)
       setTreeDataServer(dbs)
       setIsLoadingDatabase(false)
     })
+  }
+
+  // It's just a simple demo. You can use tree map to optimize update perf.
+  const updateTreeData = async (list: DataNode[], key: React.Key): any => {
+
+    const data = await getTablesTreeService()
+    console.log('tables datasssssss', data)
+
+    const tableList = data.tables.map((node) => {
+      // if (node.key === key) {
+      //   return {
+      //     ...node,
+      //     children,
+      //   };
+      // }
+      // if (node.children) {
+      //   return {
+      //     ...node,
+      //     children: updateTreeData(node.children, key, children),
+      //   };
+      // }
+      // return node;
+      return {
+        name: node.tableName
+      }
+    })
+    console.log('tableListtableListtableList', tableList)
+    return tableList
+  };
+
+
+  const onLoadData = async (treeNode) => {
+    const data = await getTablesTreeService()
+    const tableList = data.tables.map((node) => {
+      return {
+        name: node.tableName
+      }
+    })
+    console.log('load data....', treeNode, data, tableList)
+    return new Promise((resolve) => {
+      const { name } = treeNode;
+      // 动态加载子节点
+      const newData = treeDataServer.map((node) => {
+        if (node.name === name) {
+          return {
+            ...node,
+            tables: tableList,
+          };
+        }
+        return node;
+      });
+      console.log('xxxxx', newData)
+      setTreeDataServer(newData);
+      resolve()
+    })
+  };
+
+  const [searchValue, setSearchValue] = useState('');
+  const onSearchChange = useCallback(
+    (e: { target: { value: React.SetStateAction<string> } }) => {
+      setSearchValue(e.target.value);
+    },
+    [searchValue]
+  );
+
+  const newTreeData = buildSchemaTree(treeDataServer, '')
+  // console.log('schematreeeeeeee', newTreeData)
+
+  const item = {
+    title: '测试表',
+    icon: <ReloadOutlined/>,
+    onClick: () => {
+      handleRefreshData()
+    }
   }
 
   return (
@@ -177,17 +258,53 @@ const DatabaseTree = (props: any) => {
           onSelect={onSelect}
           treeData={treeData}
         />*/}
-        <SchemaTree
+        {/* <SchemaTree
           style={{ overflowY: 'auto',height: '100vh' }}
           // selectKeys={selectKeys}
           // expandKeys={expandKeys}
           // height={toolContentHeight - 64 - 30}
+          loadData={onLoadData}
           height={500}
           onNodeClick={handleTreeNodeClick}
           treeData={treeDataServer}
           onExpand={handleTreeExpand}
           refreshData={handleRefreshData}
+        />*/}
+
+        <div className={'container-header'}>
+          <div>数据库列表</div>
+          <Space size={1}>
+            <CircleBtn
+              title={item.title}
+              icon={item.icon}
+              onClick={() => {
+                console.log('clickkkkkkk')
+                item.onClick?.()
+              }}
+              key={item.title}
+            />
+          </Space>
+        </div>
+
+        <Input
+          placeholder="search...."
+          allowClear
+          style={{marginBottom: 8}}
+          value={searchValue}
+          onChange={onSearchChange}
         />
+
+        <DirectoryTree
+          style={{overflowY: 'auto', height: '100vh'}}
+          // height={height}
+          // expandedKeys={expandKeys}
+          // selectedKeys={selectKeys}
+          // onExpand={onExpand}
+          onSelect={handleTreeNodeClick}
+          loadData={onLoadData}
+          treeData={newTreeData}
+        />
+
 
       </Spin>
 

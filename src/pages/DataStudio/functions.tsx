@@ -8,6 +8,7 @@ import { folderSeparator, searchTreeNode } from '@/utils/functions.tsx'
  */
 export const buildSchemaTree = (data: any, searchValue = ''): any =>
   data.map((item: any) => {
+    // console.log('itemxxxxx', item)
     return {
       isLeaf: false,
       name: item.name,
@@ -20,17 +21,18 @@ export const buildSchemaTree = (data: any, searchValue = ''): any =>
       key: item.name,
       children: item.tables?
         // filter table by search value and map table to tree node
-        item.tables.filter((table: any) => table.name.indexOf(searchValue) > -1)
+        item.tables //.filter((table: any) => table.name.indexOf(searchValue) > -1)
         .map((table: any) => {
+          console.log('tablesxxxxxx', table)
           return {
             isLeaf: true,
             name: table.name,
             parentId: item.name,
             icon: <TableOutlined />,
             content: table.name,
-            path: item.name + folderSeparator() + table.name,
-            title: searchTreeNode(table.name, searchValue),
-            key: item.name + folderSeparator() + table.name,
+            path: item.name + '/' + table.name,
+            title: table.name,
+            key: item.name + '/' + table.name,
             fullInfo: table
           };
         }): []

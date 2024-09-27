@@ -49,6 +49,14 @@ function App() {
               titleFontSizeSM: '13px',
               horizontalItemPaddingSM: '4px 0',
               horizontalMargin: '0'
+            },
+            Descriptions: {
+              itemPaddingBottom: 0,
+              itemPaddingEnd: 0,
+              titleMarginBottom: 0,
+              labelBg: 'red',
+              // contentColor: 'green',
+              titleColor: 'red',
             }
           },
           algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm

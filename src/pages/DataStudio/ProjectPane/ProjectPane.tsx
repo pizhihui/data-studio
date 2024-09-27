@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import JobTree from './JobTree'
 import { Key } from '@ant-design/pro-components'
 import { useAppDispatch } from '@/store'
-import { getListFileTrees } from './store/project.ts'
 import { MenuItemType } from 'antd/es/menu/interface'
 import { MenuInfo } from 'rc-menu/es/interface';
 import RightContextMenu from '@/components/RightContextMenu'
-import { FOLDER_RIGHT_MENU, JOB_RIGHT_MENU } from '@/pages/DataStudio/PaneLeft/constants.tsx'
+import { FOLDER_RIGHT_MENU, JOB_RIGHT_MENU } from '@/pages/DataStudio/constants.tsx'
 
 import type { MenuProps } from 'antd';
 
@@ -62,7 +61,7 @@ export const InitProjectState: ProjectState = {
   value: {}
 };
 
-const PaneLeft = () => {
+const ProjectPane = () => {
 
   const [projectState, setProjectState] = useState<ProjectState>(InitProjectState);
 
@@ -195,4 +194,4 @@ const PaneLeft = () => {
   );
 };
 
-export default PaneLeft;
+export default ProjectPane;

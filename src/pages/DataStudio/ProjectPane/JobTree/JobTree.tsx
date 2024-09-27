@@ -9,9 +9,9 @@ import { TreeVo } from '@/pages/Home/model.ts';
 import type { ButtonType } from 'antd/es/button/buttonHelpers';
 import { CodeTwoTone, SortAscendingOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@/store'
-import { getListFileTrees } from '@/pages/DataStudio/PaneLeft/store/project.ts'
 import { PythonSvg } from '@/components/Icons/CodeLanguageIcon.tsx'
 import { ClickHouseIcons, SQLIcons } from '@/components/Icons/DBIcons.tsx'
+import { getListFileTrees } from '@/pages/DataStudio/store/DataStudioSlice.ts'
 
 /**
  * props
@@ -77,7 +77,7 @@ const JobTree: React.FC<TreeProps> = (props) => {
     TreeData
   );
 
-  const { projects } = useAppSelector(state => state.projects)
+  const { projects } = useAppSelector(state => state.dataStudio)
   const dispatch = useAppDispatch()
 
 
@@ -88,7 +88,7 @@ const JobTree: React.FC<TreeProps> = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxx:', projects)
+    //console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxx:', projects)
     setData(
       buildProjectTree(projects)
     );
