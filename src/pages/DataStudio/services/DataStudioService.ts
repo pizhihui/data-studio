@@ -1,6 +1,4 @@
 import ajax, { ResDataType } from '@/services/ajax.ts'
-import { quat } from 'gl-matrix'
-import exp = module
 
 
 export async function getDbsTreeService(): Promise<ResDataType> {
@@ -15,7 +13,7 @@ export async function getTablesTreeService(): Promise<ResDataType> {
 
 export async function listFileTreesService(path: string) {
   const url = '/api/rest_j/v1/filesystem/getDirFileTrees'
-  const data = await ajax.get(url, {params: {path}})
+  const data = await ajax.get(url, {params: {path}}) as ResDataType
   return data
 }
 

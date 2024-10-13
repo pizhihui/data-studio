@@ -36,8 +36,8 @@ export const finalEditorOptions = {
   glyphMargin: true, // 字形边缘
   formatOnType: true, // 代码格式化
   // columnSelection: true, // 列选择
-  wrappingIndent:
-    language === 'yaml' || language === 'yml' || language === 'json' ? 'indent' : 'none',
+  // @ts-ignore
+  wrappingIndent: language === 'yaml' || language === 'yml' || language === 'json' ? 'indent' : 'none',
   inlineSuggest: {
     enabled: true,
     showToolbar: 'always',

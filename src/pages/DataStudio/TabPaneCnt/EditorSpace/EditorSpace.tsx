@@ -3,7 +3,7 @@ import { SplitPane } from '@andrewray/react-multi-split-pane'
 import { Flex, Splitter, Typography } from 'antd';
 import DatabaseTree from '@/pages/DataStudio/DatabaseTree'
 import BottomPane from '@/pages/DataStudio/BottomPane'
-import CodeEdit from '@/pages/DataStudio/CodeEdit'
+import CodeEditor from '@/pages/DataStudio/CodeEditor'
 
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
   <Flex justify="center" align="center" style={{ height: '100%' }}>
@@ -30,9 +30,10 @@ const EditorSpace = () => {
               defaultSizes={[100, 500]}
               minSize={200}
               className={'split-pane'}
-
             >
-              <CodeEdit />
+              {/* sql编辑区域 */}
+              <CodeEditor />
+              {/* 下方区域: 元数据展示,查询结果展示 */}
               <BottomPane />
             </SplitPane>
             {/*<Splitter layout="vertical" style={{ height: 'calc(100vh - 100px)', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
