@@ -1,119 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Flex, Space, Tabs, Tooltip } from 'antd'
-import { SplitPane } from '@andrewray/react-multi-split-pane'
-import { CloseOutlined } from '@ant-design/icons'
-
-import  { SpanTextStyle }  from './styles.ts'
-import BaseInfo from '@/pages/DataStudio/BottomPane/MetadataShow/BaseInfo'
-import ColumnInfo from '@/pages/DataStudio/BottomPane/MetadataShow/ColumnInfo'
-import { getTableInfoService } from '@/pages/DataStudio/services/DataStudioService.ts'
-
-const {TabPane} = Tabs
-
+import React from 'react'
+import {Empty, Tabs} from 'antd'
+import {ListTabs} from '@/components/ListTab'
+import {useAppDispatch, useAppSelector} from '@/store'
+import {removeMetaTabAction, updateMetaTabsActiveKey} from '@/pages/DataStudio/store/DataStudioSlice.ts'
+import {TabType} from '@/components/ListTab/interface.ts'
+import MetadataContent from '@/pages/DataStudio/BottomPane/MetadataShow/MetadataContent.tsx'
 
 const MetadataShow = () => {
-  const onTab = (activeKey: string) => {
-    console.log('ON TAB Open', activeKey);
-  };
 
-  const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);  // 控制按钮是否可见
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
+  const dispatch = useAppDispatch()
+  const metaTabs = useAppSelector((state) => state.dataStudio.metaListTabs)
+  const metaActiveTab = useAppSelector((state) => state.dataStudio.metaActiveTab)
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-  const handleDelete = () => {
-    console.log('handle click')
-    setIsVisible(false);  // 删除按钮
-  };
+  // const [activeTab, setActiveTab] = useState<string>(metaTabs[0]?.id || '');
 
-  if (!isVisible) {
-    return null; // 如果按钮被删除，不渲染
-  }
-
-  const [tableInfo, setTableInfo] = useState({})
-  useEffect(() => {
-    async function  fn() {
-      const data = await getTableInfoService('t_xxxx')
-      setTableInfo(data)
+  // 删除
+  const handleTabClose = (id: string, e: React.MouseEvent<HTMLSpanElement>) => {
+    e.stopPropagation();
+    dispatch(removeMetaTabAction(id)); // 使用 Redux action 删除 tab
+    // 确保 activeTab 不会设置为已删除的 tab
+    if (metaActiveTab === id) {
+      // 获取当前 tabs
+      const remainingTabs = metaTabs.filter(tab => tab.id !== id);
+      // 设置下一个激活的 tab
+      if (remainingTabs.length > 0) {
+        // 设置下一个 tab 为激活状态
+        dispatch(updateMetaTabsActiveKey(remainingTabs[0].id))
+      } else {
+        dispatch(updateMetaTabsActiveKey(''))
+      }
     }
-    fn()
-  }, []);
+  };
+  const handleTabClick = (id: string) => {
+    // setActiveTab(id);
+    dispatch(updateMetaTabsActiveKey(id))
+  };
+
+  // ****** 加入每个 tab 显示内容的渲染
+  const tabItems = metaTabs.map((item: TabType) => {
+    return {
+      ...item,
+      children: <MetadataContent label={item.label}/>
+    }
+  })
 
   return (
     <>
-      <Flex style={{height: parent.innerHeight, overflow: 'auto', position: 'relative'}}>
-        <SplitPane
-          split='vertical'
-          defaultSizes={[50, 500]}
-          minSize={50}
-          className={'split-pane'}
-        >
-          <div >
-            <Flex vertical>
-              <Tooltip title="prompt text" color='#108ee9' placement="right">
-                <Button color="default" variant="link"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={isHovered ? handleDelete : undefined}
-                >
-                  <div className={SpanTextStyle}>table111111111111111111</div>
-                  {isHovered && <CloseOutlined /> }
-                </Button>
-              </Tooltip>
-              <Tooltip title="prompt text" color='#108ee9' placement="right">
-                <Button color="default" variant="link">
-                  <span>tab2222222222222222</span>
-                </Button>
-              </Tooltip>
-              <Tooltip title="prompt text" color='#108ee9' placement="right">
-                <Button color="default" variant="link">
-                  <span>table3333333</span>
-                </Button>
-              </Tooltip>
-            </Flex>
-          </div>
-          <div>
-            <Space direction="vertical" style={{padding: '10px'}}>
-              <Space>
-                <div>对象名称: xxxxx</div>
-                <div>负责人:xxxxx</div>
-              </Space>
-              <Tabs
-                type="card"
-                size="small"
-                defaultActiveKey="1"
-                onTabClick={onTab}
-                onChange={onTab}
-                style={{height: '100%'}}
-              >
-                <TabPane tab="基础信息" key="1">
-                  <BaseInfo />
-                </TabPane>
-
-                <TabPane tab="列信息" key="2">
-                  <ColumnInfo tableInfo={tableInfo}/>
-                </TabPane>
-
-                <TabPane tab="分区" key="3">
-                  分区
-                </TabPane>
-
-                <TabPane tab="生成 DDL" key="4">
-                  生成 DDL
-                </TabPane>
-              </Tabs>
-            </Space>
-          </div>
-        </SplitPane>
-      </Flex>
-
-
+      {metaTabs.length <= 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}/>}
+      <div style={{height: '80vh'}}>
+        <ListTabs items={tabItems} activeTab={metaActiveTab} onTabClick={handleTabClick} onTabClose={handleTabClose}/>
+      </div>
     </>
-  );
+  )
 };
 
 export default MetadataShow;

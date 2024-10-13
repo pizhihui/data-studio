@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Input, Space, Spin, Tree, TreeDataNode } from 'antd'
-import { CarryOutOutlined, FormOutlined, ReloadOutlined } from '@ant-design/icons'
+import { CarryOutOutlined, FormOutlined, ReloadOutlined, CheckOutlined } from '@ant-design/icons'
 import SchemaTree from '@/components/DataSource/SchemaTree'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { getDbsTreeService, getTablesTreeService } from '@/pages/DataStudio/services/DataStudioService.ts'
 import type { DataNode, Key } from 'rc-tree/lib/interface';
 import { buildSchemaTree } from '@/pages/DataStudio/functions.tsx'
 import { CircleBtn } from '@/components/CallBackButton/CircleBtn.tsx'
+import {addMetaTabAction} from '@/pages/DataStudio/store/DataStudioSlice.ts'
 
 const { DirectoryTree } = Tree
 
@@ -125,6 +126,17 @@ const DatabaseTree = (props: any) => {
     return setShowLeafIcon(false);
   };
 
+  const addNewTab = (tablename: string) => {
+    const newTab = {
+      id: Date.now() + '', // 使用当前时间戳作为 id
+      label: tablename,
+      // content: `This is the content of New Tab ${tabsData.length + 1}`,
+      // contentComponent: TabContentComponent // 设置内容组件
+    };
+    dispatch(addMetaTabAction(newTab)); // 使用 Redux action 添加新 tab
+    // setActiveTab(newTab.id); // 设置新 tab 为激活状态
+  };
+
   const handleTreeNodeClick = async (keys: Key[], info: any) => {
     console.log('clickkkkkkkkk', keys, info)
     // // 选中的key
@@ -140,7 +152,7 @@ const DatabaseTree = (props: any) => {
     if (!isLeaf) {
       return;
     }
-
+    addNewTab(tableName)
     // const queryParams = { id: selectDatabaseId, schemaName, tableName };
     // dispatch({
     //   type: STUDIO_MODEL.addTab,

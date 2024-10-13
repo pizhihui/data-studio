@@ -21,5 +21,6 @@ export async function listFileTreesService(path: string) {
 
 export async function getTableInfoService(tablename: string) {
   const url = '/api/rest_j/v1/datasource/tableInfo'
-  return await ajax.get(url, {params: {tablename}})
+  const res = (await ajax.get(url, {params: {tablename}})) as ResDataType
+  return res
 }

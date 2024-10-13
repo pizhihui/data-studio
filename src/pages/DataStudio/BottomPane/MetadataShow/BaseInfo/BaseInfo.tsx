@@ -45,7 +45,7 @@ const items: DescriptionsProps['items'] = [
 const BaseInfo = () => {
   return (
     <div style={{padding: '10px'}} className='base-info-container'>
-      <Descriptions size='small' items={items} span={2} column={1}
+      <Descriptions size='small' items={items}  column={1}
                     contentStyle={{fontSize: '12px', paddingBottom: 0}}
                     labelStyle={{fontSize: '12px', width:'120px'}}/>
     </div>

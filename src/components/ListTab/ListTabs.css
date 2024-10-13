@@ -1,0 +1,95 @@
+/* Tabs 组件容器 */
+.tabs-container {
+    height: 100%;
+    display: flex;
+}
+
+/* Tabs Header 区域样式 */
+.tabs-header {
+    display: flex;
+    flex-direction: column;
+    /*background-color: #f5f5f5;*/
+    /*border-right: 1px solid #ddd;*/
+    height: 100%;
+}
+
+/* 单个 Tab 项 */
+.tab-item {
+    position: relative;
+    padding: 4px 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab-item:hover {
+    /*background-color: #e6e6e6;*/
+    color: #0064c8;
+}
+
+/* 激活的 Tab */
+.tab-item.active {
+    background-color: #fff;
+    /*border-right: 2px solid #1890ff;*/
+    /*font-weight: bold;*/
+    color:  #0064c8;
+}
+
+/* Tab 文字溢出时显示 ... */
+.tab-label {
+    display: inline-block;
+    /*max-width: 100px;  !* 控制文字最大宽度 *!*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 关闭按钮 */
+.tab-close {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    visibility: hidden;  /* 初始隐藏 */
+}
+.tab-close:hover {
+    color: #ff4d4f;  /* 关闭按钮悬停时变为红色 */
+}
+
+/* Tooltip 样式 */
+.tooltip {
+    position: absolute;
+    top: 50%;
+    left: 60%; /* 让 tooltip 出现在 tab-item 的右侧 */
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    /*z-index: 10; !* 增加 z-index 确保 tooltip 显示在最上层 *!*/
+    visibility: visible;
+    opacity: 1;
+    /*transition: opacity 0.2s ease-in-out;*/
+}
+
+.tab-item:hover .tab-close {
+    visibility: visible;  /* 悬停时显示 */
+}
+
+/* Tab 内容区域 */
+.tabs-content {
+    padding: 20px;
+    background-color: #fff;
+    height: 100%;
+}
+
+.tab-content {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    border-radius: 4px;
+}

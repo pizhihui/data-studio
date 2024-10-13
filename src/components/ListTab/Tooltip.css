@@ -1,0 +1,11 @@
+.tooltip {
+    position: absolute; /* 让 tooltip 相对于窗口定位 */
+    background-color: #108ee9;  /* #333 #108ee9 #0064c8 */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    z-index: 1000; /* 确保 tooltip 在最上层 */
+    transition: opacity 0.2s ease-in-out;
+}
