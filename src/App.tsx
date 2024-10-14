@@ -44,9 +44,9 @@ function App() {
               headerHeight: '55px'
             },
             Tabs: {
-              cardGutter: '0',
+              cardGutter: 0,
               cardPaddingSM: '4px 8px',
-              titleFontSizeSM: '13px',
+              titleFontSizeSM: 13,
               horizontalItemPaddingSM: '4px 0',
               horizontalMargin: '0'
             },

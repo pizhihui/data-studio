@@ -24,13 +24,12 @@ const Layout = () => {
                defaultSelectedKeys={['2']}
                items={items1}
                style={{flex: 1, minWidth: 0}}
-
              />
            </Flex>
          </Header>
          {/* main container */}
          <AntdLayout>
-           <Content>
+           <Content style={{height: 'calc(100vh - 55px)'}}>
              {/* router render */}
              <Outlet />
            </Content>

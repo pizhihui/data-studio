@@ -307,7 +307,7 @@ const DatabaseTree = (props: any) => {
         />
 
         <DirectoryTree
-          style={{overflowY: 'auto', height: '100vh'}}
+          style={{overflowY: 'auto'}}
           // height={height}
           // expandedKeys={expandKeys}
           // selectedKeys={selectKeys}
