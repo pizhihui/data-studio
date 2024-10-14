@@ -7,7 +7,7 @@ import { MenuInfo } from 'rc-menu/es/interface';
 import RightContextMenu from '@/components/RightContextMenu'
 import { FOLDER_RIGHT_MENU, JOB_RIGHT_MENU } from '@/pages/DataStudio/constants.tsx'
 
-import type { MenuProps } from 'antd';
+import { Flex, MenuProps } from 'antd';
 
 export type ContextMenuPosition = {
   left: number;
@@ -175,20 +175,20 @@ const ProjectPane = () => {
 
   return (
    <>
-     <JobTree onNodeClick={(info: any) => onNodeClick(info)}
-              onRightClick={handleRightClick}
-              selectKeyChange={(keys: Key[]) => handleSelectKeyChange}
-              onExpand={onExpand}
-     />
-     <RightContextMenu
-       contextMenuPosition={projectState.contextMenuPosition}
-       open={projectState.contextMenuOpen}
-       openChange={() =>
-         setProjectState((prevState) => ({ ...prevState, contextMenuOpen: false }))
-       }
-       items={projectState.menuItems}
-       onClick={handleMenuClick}
-     />
+       <JobTree onNodeClick={(info: any) => onNodeClick(info)}
+                onRightClick={handleRightClick}
+                selectKeyChange={(keys: Key[]) => handleSelectKeyChange}
+                onExpand={onExpand}
+       />
+       <RightContextMenu
+         contextMenuPosition={projectState.contextMenuPosition}
+         open={projectState.contextMenuOpen}
+         openChange={() =>
+           setProjectState((prevState) => ({ ...prevState, contextMenuOpen: false }))
+         }
+         items={projectState.menuItems}
+         onClick={handleMenuClick}
+       />
    </>
 
   );

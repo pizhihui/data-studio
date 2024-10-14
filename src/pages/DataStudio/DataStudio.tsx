@@ -7,6 +7,7 @@ import { useAppDispatch } from '@/store'
 import { updateToolContentHeightReducer } from '@/pages/DataStudio/store/DataStudioSlice.ts'
 import ProjectPane from '@/pages/DataStudio/ProjectPane'
 import WorkbenchPane from '@/pages/DataStudio/WorkbenchPane'
+import { Allotment } from 'allotment'
 
 const DataStudio = () => {
 
@@ -57,16 +58,26 @@ const DataStudio = () => {
 
   return (
     <>
-      <Flex style={{height: parent.innerHeight - 55, overflow: 'auto', position: 'relative'}}>
-        <SplitPane
+      {/*<Flex style={{height: parent.innerHeight - 55, overflow: 'auto', position: 'relative'}}>*/}
+      <Flex style={{height: parent.innerHeight - 55}}>
+        {/*<SplitPane
           split={'vertical'}
           defaultSizes={[100, 500]}
           minSize={200}
           className={'split-pane'}
         >
           <ProjectPane />
-          <WorkbenchPane />
-        </SplitPane>
+           <WorkbenchPane />
+        }*/ }
+
+        <Allotment>
+          <Allotment.Pane minSize={90} maxSize={300}>
+            <ProjectPane />
+          </Allotment.Pane>
+          <Allotment.Pane>
+            <WorkbenchPane />
+          </Allotment.Pane>
+        </Allotment>
       </Flex>
 
     </>

@@ -16,3 +16,12 @@ export const VIEW = {
   otherHeight: 0,
   paddingInline: 50
 };
+
+/**
+ * 数据列类型
+ */
+export type ColumnInfoType = {
+  name: string
+  type: string
+  comment: string
+}

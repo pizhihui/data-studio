@@ -1,5 +1,5 @@
 import Search from 'antd/es/input/Search';
-import { Button, Dropdown, Empty, Space, Tree, MenuProps } from 'antd';
+import { Button, Dropdown, Empty, Space, Tree, MenuProps, Flex } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { FileImageFilled } from '@ant-design/icons'
 const { DirectoryTree } = Tree;
@@ -79,8 +79,6 @@ const JobTree: React.FC<TreeProps> = (props) => {
 
   const { projects } = useAppSelector(state => state.dataStudio)
   const dispatch = useAppDispatch()
-
-
 
   useEffect(() => {
     console.log('job tree use effect.......')
@@ -172,9 +170,10 @@ const JobTree: React.FC<TreeProps> = (props) => {
   };
 
   return (
-    <Space direction='vertical' size={0} >
+    // <Space direction='vertical'  >
+    <Flex vertical={true}>
       <Search
-        style={{ margin: '8px 0px', width: leftContainerWidth - 60 }}
+        // style={{ margin: '8px 0px', width: leftContainerWidth - 60 }}
         placeholder='请输入关键字搜索'
         onChange={onChangeSearch}
         allowClear={true}
@@ -192,8 +191,8 @@ const JobTree: React.FC<TreeProps> = (props) => {
         <Button icon={<SortAscendingOutlined />} type={sortState.sortIconType}></Button>
       </Dropdown>*/}
       <DirectoryTree
-        style={{ ...style, overflowY: 'auto',height: '100vh' }}
-        className={'treeList'}
+        // style={{ ...style, overflowY: 'auto',height: '100vh' }}
+        // className={'treeList'}
         onSelect={(_, info) => onNodeClick(info)}
         onRightClick={onRightClick}
         // expandedKeys={expandKeys}
@@ -202,7 +201,7 @@ const JobTree: React.FC<TreeProps> = (props) => {
         onExpand={onExpand}
         treeData={data}
       />
-    </Space>
+    </Flex>
   )
 }
 

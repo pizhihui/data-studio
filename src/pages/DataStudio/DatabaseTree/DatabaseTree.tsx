@@ -108,7 +108,7 @@ const DatabaseTree = (props: any) => {
       setTreeDataServer(dbs)
       setIsLoadingDatabase(false)
     })
-  }, [toolContentHeight]);
+  }, []);
 
   const onSelect = (selectedKeys: React.Key[], info: any) => {
     console.log('selected', selectedKeys, info);

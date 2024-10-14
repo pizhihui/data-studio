@@ -27,7 +27,10 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-import Toolbar from '@/pages/DataStudio/CodeEditor/Toolbar'
+import Toolbar, { ActionType } from '@/pages/DataStudio/CodeEditor/Toolbar'
+import { useRequest } from 'ahooks'
+import { getQueryDataResultService } from '@/pages/DataStudio/services/DataStudioService.ts'
+import { ResDataType } from '@/services/ajax.ts'
 self.MonacoEnvironment = {
   getWorker(_, label) {
     if (label === 'json') {
@@ -58,7 +61,14 @@ type iCodeEditor = monaco.editor.ICodeEditor;
  *
  * @constructor
  */
-const CodeEditor = () => {
+type PropsType = {
+  onAction: (action: ActionType)=> void
+}
+const CodeEditor: React.FC<PropsType> = (props) => {
+
+  const {
+    onAction
+  } = props
 
   const [language, setLanuguage] = useState('')
   useEffect(() => {
@@ -231,6 +241,25 @@ const CodeEditor = () => {
       }
     })
 
+    // 绑定快捷键
+    editorRef.current.addCommand(monaco.KeyMod.CtrlCmd + monaco.KeyCode.Enter, () => {
+      console.log('cmd/ctrl+enter开始执行.......')
+    })
+
+
+    // 绑定右键的操作
+    editorRef.current.addAction({
+      id: 'find',
+      label: '查找',
+      keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyF],
+      // keybindingContext: null,
+      contextMenuGroupId: 'control',
+      contextMenuOrder: 1.6,
+      run(editor ) {
+        editor.trigger('find', 'actions.find', null)
+      }
+    })
+
     // editor.layout()
     // editor.focus()
   }
@@ -238,18 +267,12 @@ const CodeEditor = () => {
     console.log('here is the current model value:', value);
   }
 
-  function onClickRun() {
-    if(!editorRef.current) return
-    const selection = editorRef.current.getSelection();
-    if(selection == null) return
-    const execSql = selection.isEmpty() ? null : editorRef.current.getModel()?.getValueInRange(selection)
-    console.log('执行的 SQL 逻辑是: ', execSql)
-  }
+
 
   return (
     <>
       <div style={{height: '32px'}}>
-        <Toolbar onRun={onClickRun}/>
+        <Toolbar onAction={onAction}/>
       </div>
       <Editor
         height="100vh"

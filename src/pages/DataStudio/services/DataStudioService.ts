@@ -22,3 +22,9 @@ export async function getTableInfoService(tablename: string) {
   const res = (await ajax.get(url, {params: {tablename}})) as ResDataType
   return res
 }
+
+export async function getQueryDataResultService(path: string) {
+  const url = '/api/rest_j/v1/filesystem/openFile'
+  const res = (await ajax.get(url, {params: {path}})) as ResDataType
+  return res
+}

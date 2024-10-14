@@ -7,12 +7,7 @@ import {Card, Flex, Space} from 'antd'
 import '@antv/s2/dist/style.min.css'
 import {getTableInfoService} from '@/pages/DataStudio/services/DataStudioService.ts'
 import {useRequest} from 'ahooks'
-
-type ColumnInfoType = {
-  name: string
-  type: string
-  comment: string
-}
+import { ColumnInfoType } from '@/pages/DataStudio/model.ts'
 
 type TableInfoType = {
   dbName: string
