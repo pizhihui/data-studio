@@ -5,7 +5,6 @@ import Tab from './ListTab.tsx';
 import Tooltip from '@/components/ListTab/Tooltip.tsx'
 import {TabType} from '@/components/ListTab/interface.ts'
 
-import 'allotment/dist/style.css';
 import './ListTabs.css';
 
 type ListTabsPropsType = {

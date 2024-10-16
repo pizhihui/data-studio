@@ -60,45 +60,37 @@ const EditorSpace = () => {
 
   return (
     <>
-      <Flex style={{height: parent.innerHeight, overflow: 'auto', position: 'relative'}}>
-        {/*<SplitPane
-          split={'vertical'}
-          defaultSizes={[10, 20]}
-          minSize={120}
-          className={'split-pane'}
-        >*/}
-        <Allotment defaultSizes={[200, 800]}>
-          <Allotment.Pane minSize={90} maxSize={300}>
+      <div style={{
+        // height: parent.innerHeight,
+        // overflow: 'auto',
+        height: 'calc(100vh - 40px - 31px - 33px)',
+        // height: '100vh',
+        width: '100%',
+        // position: 'relative'
+      }}>
+        <Allotment defaultSizes={[150, 800]}>
+
+          <Allotment.Pane minSize={100} maxSize={400}>
             <DatabaseTree/>
           </Allotment.Pane>
+
           <Allotment.Pane>
-            {/*<SplitPane
-              split={'horizontal'}
-              defaultSizes={[100, 500]}
-              minSize={200}
-              className={'split-pane'}
-            >*/}
             <Allotment vertical={true}>
+
               {/* sql编辑区域 */}
-              <Allotment.Pane minSize={200}>
+              <Allotment.Pane minSize={100}>
                 <CodeEditor onAction={onEditorAction}/>
               </Allotment.Pane>
+
               {/* 下方区域: 元数据展示,查询结果展示 */}
-              <Allotment.Pane minSize={200}>
+              <Allotment.Pane minSize={100}>
                 <BottomPane/>
               </Allotment.Pane>
+
             </Allotment>
-            {/*<Splitter layout="vertical" style={{ height: 'calc(100vh - 100px)', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-              <Splitter.Panel defaultSize='50%' min='10%' max='70%'>
-                <Desc text="First" />
-              </Splitter.Panel>
-              <Splitter.Panel defaultSize='50%' min='10%' max='70%'>
-                <Desc text="Second" />
-              </Splitter.Panel>
-            </Splitter>*/}
           </Allotment.Pane>
         </Allotment>
-      </Flex>
+      </div>
     </>
   );
 };

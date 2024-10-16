@@ -30,19 +30,16 @@ const BottomPane = () => {
 
   return (
     <>
-      <div>
-        <div style={{padding: '0 8px'}}>
-          <Tabs
-            type="line"
-            size="small"
-            defaultActiveKey="2"
-            onTabClick={onTab}
-            onChange={onTab}
-            style={{height: '100%'}}
-            items={items}
-          />
-        </div>
-
+      <div style={{padding: '0 8px'}}>
+        <Tabs
+          type="line"
+          size="small"
+          defaultActiveKey="2"
+          onTabClick={onTab}
+          onChange={onTab}
+          // style={{height: '100%'}}
+          items={items}
+        />
       </div>
     </>
   );

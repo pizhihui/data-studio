@@ -13,6 +13,8 @@ import './assets/common.css'
 
 import './assets/styles/global.less'
 
+import 'allotment/dist/style.css';
+
 
 function App() {
 
@@ -41,7 +43,7 @@ function App() {
             Radio: {},
             Menu: {},
             Layout: {
-              headerHeight: '55px'
+              headerHeight: '40px'
             },
             Tabs: {
               cardGutter: 0,

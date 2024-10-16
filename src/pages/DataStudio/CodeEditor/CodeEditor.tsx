@@ -271,11 +271,9 @@ const CodeEditor: React.FC<PropsType> = (props) => {
 
   return (
     <>
-      <div style={{height: '32px'}}>
-        <Toolbar onAction={onAction}/>
-      </div>
-      <Editor
-        height="100vh"
+      <Toolbar onAction={onAction}/>
+      {/*<Editor
+        // height="100vh"
         // defaultLanguage="sql"
         defaultValue="-- 注释"
         language={language}
@@ -283,6 +281,13 @@ const CodeEditor: React.FC<PropsType> = (props) => {
         beforeMount={handleEditorWillMount}
         onMount={onEditorDidMount}
         onChange={onEditorChange}
+      />*/}
+      <Editor
+        defaultLanguage="javascript"
+        defaultValue="// some comment"
+        options={{
+          scrollBeyondLastLine: false,
+        }}
       />
     </>
   )
