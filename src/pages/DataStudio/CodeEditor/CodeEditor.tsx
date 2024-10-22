@@ -1,36 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Editor,{ Monaco } from '@monaco-editor/react'
+// ****** 使用自带的包,不请求 cdn 的包,容易超时
+import Editor, { loader, Monaco } from '@monaco-editor/react'
 
 import * as monaco from 'monaco-editor'
-import {
-  CancellationToken,
-  Selection,
-  editor,
-  languages,
-  Position
-} from 'monaco-editor';
-
-import { finalEditorOptions } from '@/pages/DataStudio/CodeEditor/options-bak.ts'
+import { editor, KeyCode, languages, Selection } from 'monaco-editor'
 import { editorOptions } from '@/pages/DataStudio/CodeEditor/options.ts'
 import { Languages } from '@/pages/DataStudio/CodeEditor/languages.ts'
 import { sqlLanConf, sqlLanToken } from '@/pages/DataStudio/CodeEditor/languages/sql/config.ts'
 import { sqlItemProvider } from '@/pages/DataStudio/CodeEditor/languages/completionItems.ts'
 
 import css from './CodeEditor.module.css'
-
-
-
-// ****** 使用自带的包,不请求 cdn 的包,容易超时
-import { loader } from '@monaco-editor/react';
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import Toolbar, { ActionType } from '@/pages/DataStudio/CodeEditor/Toolbar'
-import { useRequest } from 'ahooks'
-import { getQueryDataResultService } from '@/pages/DataStudio/services/DataStudioService.ts'
-import { ResDataType } from '@/services/ajax.ts'
+import { getSurroundingContent } from '@/pages/DataStudio/CodeEditor/functions.ts'
+
 self.MonacoEnvironment = {
   getWorker(_, label) {
     if (label === 'json') {
@@ -46,9 +33,9 @@ self.MonacoEnvironment = {
       return new tsWorker();
     }
     return new editorWorker();
-  },
+  }
 };
-loader.config({ monaco });
+loader.config({monaco});
 
 // loader.init().then(/* ... */);
 
@@ -62,7 +49,7 @@ type iCodeEditor = monaco.editor.ICodeEditor;
  * @constructor
  */
 type PropsType = {
-  onAction: (action: ActionType)=> void
+  onAction: (action: ActionType) => void
 }
 const CodeEditor: React.FC<PropsType> = (props) => {
 
@@ -101,145 +88,188 @@ const CodeEditor: React.FC<PropsType> = (props) => {
     // 注册新语言: 自动提示
     languages.registerCompletionItemProvider(Languages.SQL, sqlItemProvider)
 
-
   }
+
   let curDeration: editor.IEditorDecorationsCollection
   let curDerationColor: editor.IEditorDecorationsCollection
 
-  const changeColorRange = (selectionFlag: boolean = false, startLineNumber: number, startColumn: number,
-                            endLineNumber: number, endColumn: number) => {
-
+  /**
+   * 修改左侧颜色的
+   */
+  const changeColorRange = (selectionFlag: boolean = false, selection: Selection) => {
     if (curDerationColor) {
       curDerationColor.clear()
     }
 
-    if(!editorRef.current) return
+    if (!editorRef.current) return
 
-    const model: editor.ITextModel | null = editorRef.current.getModel();
+    const model: editor.ITextModel | null = editorRef.current.getModel()
     if (!model) {
       return;
     }
-    const totalLine = model.getLineCount()
-    let beforeLineNum = startLineNumber
-    for (let i = startLineNumber - 1; i >= 1; i--) {
-      let content = model.getLineContent(i)
-      if (content.indexOf(";") > 0) {
-        i++;
-        content = model.getLineContent(i)
-        while (content.trim() === '') {
-          content = model.getLineContent(i)
-          i++
-        }
-        beforeLineNum = i - 1
-        break;
-      }
-      if (i === 1) {
-        beforeLineNum = 1
-      }
-    }
-
-    let afterLineNum = totalLine
-    for (let i = startLineNumber; i <= totalLine; i++) {
-      const content = model.getLineContent(i)
-      if (content.indexOf(";") > 0) {
-        afterLineNum = i;
-        break;
-      }
-    }
-
-    if (selectionFlag) {
-      beforeLineNum = startLineNumber
-      afterLineNum = endLineNumber
-    }
-
-    curDerationColor = editorRef.current!.createDecorationsCollection([
+    const {startLineNumber, startColumn, endLineNumber, endColumn} = selection
+    curDerationColor = editorRef.current.createDecorationsCollection([
       {
-        range: new monaco.Range(beforeLineNum, 1, afterLineNum, 10000),
+        range: new monaco.Range(startLineNumber, 1, endLineNumber, 10000),
         options: {
           isWholeLine: true,
-          linesDecorationsClassName: css.myLineDecoration,
-        },
+          linesDecorationsClassName: css.myLineDecoration
+        }
       }
     ]);
-    console.log('=============beforeLineNum=afterLineNum', beforeLineNum, afterLineNum)
+    console.log('changeColorRange===========beforeLineNum=afterLineNum', startLineNumber, endLineNumber)
   }
 
-  const changeExecPosition = (startLineNumber: number, startColumn: number,
-                              endLineNumber: number, endColumn: number) => {
-    if(!editorRef.current) return
-    // if (currentDerarations) {
-    //   const ids = currentDerarations.map(e => {
-    //     return e.id
-    //   });
-    //   currentEditor.removeDecorations(ids)
-    // }
+  /**
+   * 修改左侧执行图标
+   */
+  const changeExecPosition = (selection: Selection) => {
+    if (!editorRef.current) return
     if (curDeration) {
       curDeration.clear()
     }
+    let {startLineNumber, startColumn, endLineNumber, endColumn} = selection
+    endLineNumber = startLineNumber  // 只显示第一行的
     const range = new monaco.Range(startLineNumber, startColumn, endLineNumber, endColumn);
+    console.log('changeExecPosition===========', range)
     const decorations: editor.IModelDeltaDecoration[] = [
       {
-        // startLineNumber: number, startColumn: number, endLineNumber: number, endColumn: number
         range: range,
         options: {
           isWholeLine: true,
           className: "myContentClass",
           glyphMarginClassName: `codicon-run ${css.runDecoration}`,
           glyphMarginHoverMessage: {
-            value: '<p>运行(⌘Enter)</p>',
+            value: '<p id="code-run">运行(⌘Enter)</p>',
             supportHtml: true,
             supportThemeIcons: true
           }
-        },
+        }
       }
     ]
     curDeration = editorRef.current.createDecorationsCollection(decorations)
-    // res.clear()
-    // const getDerations: editor.IModelDecoration[] | null = currentEditor.getDecorationsInRange(range)
-    // getDerations?.forEach(e => {
-    //   currentDerarations.push(e)
-    // })
-    console.log('changexxxxxxxxxabc', curDeration)
+  }
+
+  function getSelectionAndText(): [Selection | null, string] {
+    if (editorRef.current) {
+      const userSelection: Selection | null = editorRef.current.getSelection()
+      const model: editor.ITextModel | null = editorRef.current.getModel();
+      const selectedText = model?.getValueInRange(userSelection!);
+      if (userSelection && selectedText) {
+        return [userSelection, selectedText]
+      }
+    }
+    return [null, '']
   }
 
   function onEditorDidMount(editor: editor.IStandaloneCodeEditor, monaco: Monaco) {
+    // 绑定 monaco 和 editor 实例
     monacoRef.current = monaco
     editorRef.current = editor
 
-
     // 绑定 mouse 事件
     editorRef.current.onMouseDown((e) => {
-      if(!editorRef.current) return
-      const userSelection: Selection | null = editorRef.current.getSelection()
-      const model: editor.ITextModel | null = editorRef.current.getModel();
-      const selectedText = model?.getValueInRange(userSelection!);
-      console.log('mouse down: ', userSelection, selectedText)
-      // console.log('mouse down: content', content)
+      if (!editorRef.current) return
+      // const userSelection: Selection | null = editorRef.current.getSelection()
+      // const model: editor.ITextModel | null = editorRef.current.getModel();
+      // const selectedText = model?.getValueInRange(userSelection!)
+      const [userSelection, selectedText] = getSelectionAndText()
 
-      if (userSelection) {
-        changeExecPosition(userSelection.startLineNumber, userSelection.startColumn,
-          userSelection.endLineNumber, userSelection.endColumn);
-        // changeColorRange(false, userSelection.startLineNumber,userSelection.startColumn,
-        //   userSelection.endLineNumber, userSelection.endColumn);
+      // console.log('mouse down userSelection: ', userSelection)
+      // console.log('mouse down selectedText: ', selectedText)
+      // // console.log('mouse down: content', content)
+      //
+      // if (userSelection && selectedText) {
+      //   changeExecPosition(userSelection);
+      //   // changeColorRange(false, userSelection.startLineNumber,userSelection.startColumn,
+      //   //   userSelection.endLineNumber, userSelection.endColumn);
+      // }
+      if (curDerationColor) {
+        curDerationColor.clear()
+      }
+      if (curDeration) {
+        curDeration.clear()
       }
     })
     editorRef.current.onMouseUp((e) => {
-      if(!editorRef.current) return
-      const userSelection: Selection | null = editorRef.current.getSelection()
-      const model: editor.ITextModel | null = editorRef.current.getModel();
-      const selectedText = model?.getValueInRange(userSelection!);
-      console.log('mouse up: ', userSelection, selectedText)
+      if (!editorRef.current) return
+      const [userSelection, selectedText] = getSelectionAndText()
+      console.log('mouse up userSelection: ', userSelection)
+      console.log('mouse up selectedText: ', selectedText)
+
       if (userSelection) {
         // console.log('mouse up: content', content)
         if (selectedText) {
-          changeColorRange(true, userSelection.startLineNumber, userSelection.startColumn,
-            userSelection.endLineNumber, userSelection.endColumn);
+          changeExecPosition(userSelection)
+          changeColorRange(true, userSelection)
         } else {
-          changeColorRange(false, userSelection.startLineNumber, userSelection.startColumn,
-            userSelection.endLineNumber, userSelection.endColumn);
+          changeColorRange(false, userSelection);
+        }
+      } else {
+        const { startLineNumber = 0,endLineNumber = 0,content  = ''} = getSurroundingContent( editorRef.current!) || {}
+        console.log('onMouseUpxxxxxx ', content)
+        if (content.length > 0) {
+          const selection = new Selection(startLineNumber, 0, endLineNumber, 1000000);
+          changeColorRange(false, selection)
+          changeExecPosition(selection)
         }
       }
+
+      // 执行按钮
+      if (e.target.type === monaco.editor.MouseTargetType.GUTTER_GLYPH_MARGIN) {
+        const lineNumber = e.target.position?.lineNumber;
+        if (lineNumber) {
+          console.log(`Glyph margin clicked at line: ${lineNumber}`);
+        }
+      }
+
     })
+
+    editorRef.current.onKeyDown((e) => {
+      // console.log('key down', e)
+      // if (curDerationColor) {
+      //   curDerationColor.clear()
+      // }
+      // if (curDeration) {
+      //   curDeration.clear()
+      // }
+    })
+    editorRef.current.onKeyUp((e) => {
+      // const res = ![KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow].includes(e.keyCode)
+      // console.log('key up', res)
+      // if (res) {
+      //   return
+      // }
+      if (curDerationColor) {
+        curDerationColor.clear()
+      }
+      if (curDeration) {
+        curDeration.clear()
+      }
+      const [userSelection, selectedText] = getSelectionAndText()
+      // console.log('key up', userSelection, userSelection)
+      // const lineNumber = e.target.position?.lineNumber;
+
+      if (userSelection && selectedText) {
+        if (selectedText) {
+          changeExecPosition(userSelection)
+          changeColorRange(true, userSelection)
+        } else {
+          changeColorRange(false, userSelection)
+        }
+      } else {
+        const { startLineNumber = 0,endLineNumber = 0, content  = ''} = getSurroundingContent( editorRef.current!) || {}
+        console.log('onMouseUpxxxxxx ', content)
+        if (content.length > 0) {
+          const selection = new Selection(startLineNumber, 0, endLineNumber, 1000000);
+          changeColorRange(false, selection)
+          changeExecPosition(selection)
+        }
+      }
+
+
+    })
+
 
     // 绑定快捷键
     editorRef.current.addCommand(monaco.KeyMod.CtrlCmd + monaco.KeyCode.Enter, () => {
@@ -255,40 +285,43 @@ const CodeEditor: React.FC<PropsType> = (props) => {
       // keybindingContext: null,
       contextMenuGroupId: 'control',
       contextMenuOrder: 1.6,
-      run(editor ) {
+      run(editor) {
         editor.trigger('find', 'actions.find', null)
       }
     })
 
-    // editor.layout()
-    // editor.focus()
+    // 初始化完后,聚焦光标
+    editor.layout()
+    editor.focus()
   }
+
   function onEditorChange(value: string | undefined, ev: monaco.editor.IModelContentChangedEvent) {
     console.log('here is the current model value:', value);
   }
 
 
-
   return (
     <>
       <Toolbar onAction={onAction}/>
-      {/*<Editor
+      <Editor
         // height="100vh"
         // defaultLanguage="sql"
-        defaultValue="-- 注释"
+        defaultValue=""
         language={language}
         options={editorOptions}
         beforeMount={handleEditorWillMount}
         onMount={onEditorDidMount}
         onChange={onEditorChange}
-      />*/}
-      <Editor
+      />
+
+      {/* 最简单的 editor  */}
+      {/*<Editor
         defaultLanguage="javascript"
         defaultValue="// some comment"
         options={{
           scrollBeyondLastLine: false,
         }}
-      />
+      />*/}
     </>
   )
 };
