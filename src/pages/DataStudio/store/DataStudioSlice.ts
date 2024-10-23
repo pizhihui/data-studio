@@ -27,9 +27,16 @@ export type DataStudioType = {
   name: string
   toolContentHeight: number
   projects: Array<any>
-  metaListTabs: TabType[]     // 元数据的 tab
-  metaActiveTab: string       //
-  metaResultActiveTab: string // 元数据/结果集的
+  // 元数据/结果集的
+  metaResultActiveTab: string
+  // 元数据的 tab
+  metaListTabs: TabType[]
+  metaActiveTab: string
+  // 结果的 tab
+  resultListTabs: TabType[]
+  resultActiveTab: string
+  resultLogTableActiveTab: string
+  // 请求结果
   queryResTabs: QueryResTabType[]
 }
 
@@ -42,7 +49,10 @@ const initialState: DataStudioType = {
   metaListTabs: [],
   metaActiveTab: '',
   metaResultActiveTab: '',
-  queryResTabs: []
+  queryResTabs: [],
+  resultListTabs: [],
+  resultActiveTab: '',
+  resultLogTableActiveTab: ''
 }
 
 export const getListFileTrees = createAsyncThunk<
@@ -73,6 +83,10 @@ const DataStudioSlice = createSlice({
       state.projects = payload
     },
 
+    // 元数据/结果集
+    updateMetaResultTabsActiveKey: (state: DataStudioType, action: PayloadAction<string>) => {
+      state.metaResultActiveTab = action.payload
+    },
     // 元数据 tab 操作
     addMetaTabAction: (state: DataStudioType, action: PayloadAction<TabType>) => {
       state.metaListTabs.push(action.payload);  // 增加新 tab
@@ -87,9 +101,20 @@ const DataStudioSlice = createSlice({
     updateMetaTabsActiveKey: (state: DataStudioType, action: PayloadAction<string>) => {
       state.metaActiveTab = action.payload
     },
-    // 元数据/结果集
-    updateMetaResultTabsActiveKey: (state: DataStudioType, action: PayloadAction<string>) => {
-      state.metaResultActiveTab = action.payload
+    // 结果的 tab
+    // 元数据 tab 操作
+    addResultTabAction: (state: DataStudioType, action: PayloadAction<TabType>) => {
+      state.resultListTabs.push(action.payload);  // 增加新 tab
+      state.resultActiveTab = action.payload.id
+    },
+    removeResultTabAction: (state: DataStudioType, action: PayloadAction<string>) => {
+      console.log('action.payload', action.payload)
+      const res = state.resultListTabs.filter(tab => tab.id !== action.payload)
+      console.log('resxxxxx', res)
+      state.resultListTabs = res
+    },
+    updateResultTabsActiveKey: (state: DataStudioType, action: PayloadAction<string>) => {
+      state.resultActiveTab = action.payload
     },
     // 结果集 tab 数据
     addTabResData: (state: DataStudioType,
@@ -116,7 +141,10 @@ export const {
   addMetaTabAction,
   removeMetaTabAction,
   updateMetaTabsActiveKey,
-  //
+  // 结果的 tab 操作
+  addResultTabAction,
+  removeResultTabAction,
+  updateResultTabsActiveKey,
   updateMetaResultTabsActiveKey,
   // 结果集操作
   addTabResData

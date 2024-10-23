@@ -1,10 +1,9 @@
-
-
-
 // 修改
 // 使用 await sleep(3); // 3 秒
 export const sleep = (second: number): Promise<void> => {
-  return new Promise(resolve => {setTimeout(resolve, second * 1000)})
+  return new Promise(resolve => {
+    setTimeout(resolve, second * 1000)
+  })
 }
 
 /**
@@ -22,4 +21,33 @@ export function generateRandomString(length: number): string {
   }
 
   return result;
+}
+
+/**
+ *
+ */
+export function getCurrentTime(): string {
+  const now = new Date();
+
+  // 格式化时间为 'HH:MM:SS'
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  return `${hours}:${minutes}:${seconds}`;
+}
+
+/**
+ *
+ */
+export function getFormatFullDateTimeStr(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const day = now.getDate().toString().padStart(2, '0');
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+
+  return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }

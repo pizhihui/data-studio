@@ -8,7 +8,7 @@ type PropsType = {
   label: string
 }
 
-const MetadataContent: React.FC<PropsType> = (props) => {
+const MetadataTabs: React.FC<PropsType> = (props) => {
 
   const {
     label
@@ -54,4 +54,4 @@ const MetadataContent: React.FC<PropsType> = (props) => {
   );
 };
 
-export default MetadataContent;
+export default MetadataTabs;

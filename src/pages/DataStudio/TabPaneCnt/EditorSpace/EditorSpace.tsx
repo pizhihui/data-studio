@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SplitPane } from '@andrewray/react-multi-split-pane'
 import { Flex, Splitter, Typography } from 'antd';
 import DatabaseTree from '@/pages/DataStudio/DatabaseTree'
@@ -6,11 +6,18 @@ import BottomPane from '@/pages/DataStudio/BottomPane'
 import CodeEditor from '@/pages/DataStudio/CodeEditor'
 import { ActionType } from '@/pages/DataStudio/CodeEditor/Toolbar'
 import { useAppDispatch } from '@/store'
-import { addTabResData, RowType, updateMetaResultTabsActiveKey } from '@/pages/DataStudio/store/DataStudioSlice.ts'
+import {
+  addMetaTabAction, addResultTabAction,
+  addTabResData,
+  RowType,
+  updateMetaResultTabsActiveKey
+} from '@/pages/DataStudio/store/DataStudioSlice.ts'
 import { ColumnInfoType } from '@/pages/DataStudio/model.ts'
 import { getQueryDataResultService } from '@/pages/DataStudio/services/DataStudioService.ts'
 import { Allotment } from 'allotment'
 import { BottomTabType } from '@/pages/DataStudio/BottomPane/BottomPane.tsx'
+import { getCurrentTime } from '@/utils'
+import { useSize } from 'ahooks'
 
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
   <Flex justify="center" align="center" style={{height: '100%'}}>
@@ -22,9 +29,23 @@ const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
 
 const EditorSpace = () => {
 
+
+  const paneRef = useRef(null!);
+  const domSize= useSize(paneRef);
+
   const dispatch = useAppDispatch()
 
+  const addNewTab = (tablename: string) => {
+    const newTab = {
+      id: Date.now() + '', // 使用当前时间戳作为 id
+      label: tablename,
+    };
+    dispatch(addResultTabAction(newTab)); // 使用 Redux action 添加新 tab
+  };
+
   async function queryData() {
+    // 添加 tab
+    addNewTab(getCurrentTime())
 
     // 切换 tab
     dispatch(updateMetaResultTabsActiveKey(BottomTabType.RESULT))
@@ -87,8 +108,8 @@ const EditorSpace = () => {
               </Allotment.Pane>
 
               {/* 下方区域: 元数据展示,查询结果展示 */}
-              <Allotment.Pane minSize={100}>
-                <BottomPane/>
+              <Allotment.Pane minSize={100} ref={paneRef}>
+                <BottomPane height={domSize?.height}/>
               </Allotment.Pane>
 
             </Allotment>

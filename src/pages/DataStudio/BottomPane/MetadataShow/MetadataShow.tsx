@@ -4,7 +4,7 @@ import {ListTabs} from '@/components/ListTab'
 import {useAppDispatch, useAppSelector} from '@/store'
 import {removeMetaTabAction, updateMetaTabsActiveKey} from '@/pages/DataStudio/store/DataStudioSlice.ts'
 import {TabType} from '@/components/ListTab/interface.ts'
-import MetadataContent from '@/pages/DataStudio/BottomPane/MetadataShow/MetadataContent.tsx'
+import MetadataTabs from '@/pages/DataStudio/BottomPane/MetadataShow/MetadataTabs.tsx'
 
 const MetadataShow = () => {
 
@@ -18,13 +18,9 @@ const MetadataShow = () => {
   const handleTabClose = (id: string, e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
     dispatch(removeMetaTabAction(id)); // 使用 Redux action 删除 tab
-    // 确保 activeTab 不会设置为已删除的 tab
     if (metaActiveTab === id) {
-      // 获取当前 tabs
       const remainingTabs = metaTabs.filter(tab => tab.id !== id);
-      // 设置下一个激活的 tab
       if (remainingTabs.length > 0) {
-        // 设置下一个 tab 为激活状态
         dispatch(updateMetaTabsActiveKey(remainingTabs[0].id))
       } else {
         dispatch(updateMetaTabsActiveKey(''))
@@ -32,7 +28,6 @@ const MetadataShow = () => {
     }
   };
   const handleTabClick = (id: string) => {
-    // setActiveTab(id);
     dispatch(updateMetaTabsActiveKey(id))
   };
 
@@ -40,16 +35,14 @@ const MetadataShow = () => {
   const tabItems = metaTabs.map((item: TabType) => {
     return {
       ...item,
-      children: <MetadataContent label={item.label}/>
+      children: <MetadataTabs label={item.label}/>
     }
   })
 
   return (
     <>
       {metaTabs.length <= 0 && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}/>}
-      <div style={{height: '80vh'}}>
         <ListTabs items={tabItems} activeTab={metaActiveTab} onTabClick={handleTabClick} onTabClose={handleTabClose}/>
-      </div>
     </>
   )
 };

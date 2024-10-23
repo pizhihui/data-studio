@@ -1,0 +1,47 @@
+.vertical-tabs-wrapper {
+  height: 100%;
+}
+.vertical-tabs-wrapper .vertical-tabs {
+  display: flex;
+  height: 100%;
+}
+
+.vertical-tabs-wrapper .vertical-tabs-sidebar {
+  /*width: 200px;*/
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 30px;
+}
+
+.vertical-tabs-wrapper .tab-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.vertical-tabs-wrapper .tab-item.active {
+  /*background-color: #1890ff;*/
+  /*color: white;*/
+}
+
+.vertical-tabs-wrapper .tab-item:hover {
+  /*background-color: #e6f7ff;*/
+}
+
+.vertical-tabs-wrapper .tab-icon {
+  /*margin-right: 8px;*/
+  font-size: 14px;
+}
+
+.vertical-tabs-wrapper .vertical-tabs-content {
+  flex: 1;
+}
+
+.vertical-tabs-wrapper .tab-content {
+  /*padding: 20px;*/
+  flex-grow: 1;
+  background-color: #fff;
+}

@@ -9,6 +9,9 @@ import ProjectPane from '@/pages/DataStudio/ProjectPane'
 import WorkbenchPane from '@/pages/DataStudio/WorkbenchPane'
 import { Allotment } from 'allotment'
 
+
+import './datastudio.less'
+
 const DataStudio = () => {
 
 
