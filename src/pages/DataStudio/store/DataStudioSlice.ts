@@ -27,8 +27,9 @@ export type DataStudioType = {
   name: string
   toolContentHeight: number
   projects: Array<any>
-  metaListTabs: TabType[]   // 元数据的 tab
-  metaActiveTab: string      //
+  metaListTabs: TabType[]     // 元数据的 tab
+  metaActiveTab: string       //
+  metaResultActiveTab: string // 元数据/结果集的
   queryResTabs: QueryResTabType[]
 }
 
@@ -40,6 +41,7 @@ const initialState: DataStudioType = {
   projects: [],
   metaListTabs: [],
   metaActiveTab: '',
+  metaResultActiveTab: '',
   queryResTabs: []
 }
 
@@ -85,6 +87,10 @@ const DataStudioSlice = createSlice({
     updateMetaTabsActiveKey: (state: DataStudioType, action: PayloadAction<string>) => {
       state.metaActiveTab = action.payload
     },
+    // 元数据/结果集
+    updateMetaResultTabsActiveKey: (state: DataStudioType, action: PayloadAction<string>) => {
+      state.metaResultActiveTab = action.payload
+    },
     // 结果集 tab 数据
     addTabResData: (state: DataStudioType,
                     action: PayloadAction<{
@@ -110,6 +116,8 @@ export const {
   addMetaTabAction,
   removeMetaTabAction,
   updateMetaTabsActiveKey,
+  //
+  updateMetaResultTabsActiveKey,
   // 结果集操作
   addTabResData
 } = DataStudioSlice.actions

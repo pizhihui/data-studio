@@ -6,10 +6,11 @@ import BottomPane from '@/pages/DataStudio/BottomPane'
 import CodeEditor from '@/pages/DataStudio/CodeEditor'
 import { ActionType } from '@/pages/DataStudio/CodeEditor/Toolbar'
 import { useAppDispatch } from '@/store'
-import { addTabResData, RowType } from '@/pages/DataStudio/store/DataStudioSlice.ts'
+import { addTabResData, RowType, updateMetaResultTabsActiveKey } from '@/pages/DataStudio/store/DataStudioSlice.ts'
 import { ColumnInfoType } from '@/pages/DataStudio/model.ts'
 import { getQueryDataResultService } from '@/pages/DataStudio/services/DataStudioService.ts'
 import { Allotment } from 'allotment'
+import { BottomTabType } from '@/pages/DataStudio/BottomPane/BottomPane.tsx'
 
 const Desc: React.FC<Readonly<{ text?: string | number }>> = (props) => (
   <Flex justify="center" align="center" style={{height: '100%'}}>
@@ -24,6 +25,9 @@ const EditorSpace = () => {
   const dispatch = useAppDispatch()
 
   async function queryData() {
+
+    // 切换 tab
+    dispatch(updateMetaResultTabsActiveKey(BottomTabType.RESULT))
 
     const res = await getQueryDataResultService('_0.dolphin')
     console.log('dataxxxx', res)

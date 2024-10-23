@@ -7,7 +7,8 @@ import { getDbsTreeService, getTablesTreeService } from '@/pages/DataStudio/serv
 import type { DataNode, Key } from 'rc-tree/lib/interface';
 import { buildSchemaTree } from '@/pages/DataStudio/functions.tsx'
 import { CircleBtn } from '@/components/CallBackButton/CircleBtn.tsx'
-import {addMetaTabAction} from '@/pages/DataStudio/store/DataStudioSlice.ts'
+import { addMetaTabAction, updateMetaResultTabsActiveKey } from '@/pages/DataStudio/store/DataStudioSlice.ts'
+import { BottomTabType } from '@/pages/DataStudio/BottomPane/BottomPane.tsx'
 
 const { DirectoryTree } = Tree
 
@@ -152,6 +153,10 @@ const DatabaseTree = (props: any) => {
     if (!isLeaf) {
       return;
     }
+
+    // 切换 tab
+    dispatch(updateMetaResultTabsActiveKey(BottomTabType.META))
+
     addNewTab(tableName)
     // const queryParams = { id: selectDatabaseId, schemaName, tableName };
     // dispatch({
