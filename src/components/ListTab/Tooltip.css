@@ -1,4 +1,4 @@
-.tooltip {
+.list-tabs-tooltip {
     position: absolute; /* 让 tooltip 相对于窗口定位 */
     background-color: #108ee9;  /* #333 #108ee9 #0064c8 */
     color: white;

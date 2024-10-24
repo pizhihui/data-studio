@@ -6,7 +6,8 @@ export const tasks = [
   {
     url: '/api/rest_j/v1/entrance/execute',
     method: 'post',
-    // {"executeApplicationName":"jdbc","executionCode":"select count(1) from  znzz_pipi_ads.t_table_0_xxxx\nwhere dt='2024-09-05'\n","runType":"jdbc","params":{"configuration":{"special":{},"runtime":{"wds.linkis.engine.runtime.datasource":"库01"},"startup":{}},"variable":{}},"source":{"scriptPath":"file:///data/linkis/users/hadoop/333.jdbc"}}
+    // 入参
+    // {"executeApplicationName":"jdbc","executionCode":"    select\n      id_no_des\n    from\n      znzz_fintech_dwd.dwd_cap_loan_fd\n    WHERE\n      channel_id IN (\n        '235',\n        '227',\n        '231',\n        '226',\n        '234',\n        '209',\n        '229',\n        '213',\n        '233'\n      )\n      and dt = '2024-10-22' limit 10 \n    \n","runType":"jdbc","params":{"configuration":{"special":{},"runtime":{"wds.linkis.engine.runtime.datasource":"离线库"},"startup":{}},"variable":{}},"source":{"scriptPath":"file:///data/linkis/users/hadoop/test_1021.jdbc"}}
     response() {
       return {
         "method": "/api/entrance/execute",

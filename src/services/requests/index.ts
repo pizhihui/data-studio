@@ -1,10 +1,10 @@
 import { BASE_URL, TIME_OUT } from './config'
-import HYRequest from './request'
+import ApiRequest from './request'
 // import { Result } from '@/types/api';
 import { message } from 'antd';
 import { HYReqConfig } from '@/services/requests/request/type.ts'
 
-const hyRequest = new HYRequest({
+const priRequest = new ApiRequest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   withCredentials: true,
@@ -16,7 +16,7 @@ const hyRequest = new HYRequest({
       console.log('response success res......', res)
       const status = res.status
       if(status !== 0) {
-        message.error('result: ' + res.message)
+        message.error('result: ' + res)
         return Promise.reject(res.data)
       }
       return res.data;
@@ -35,7 +35,7 @@ interface LinkisReqConfig<T, R> extends HYReqConfig<LinkisData<R>> {
 }
 
 export const linkisRequest = <T=any, R=any>(config: LinkisReqConfig<T, R>) => {
-  return hyRequest.request<LinkisData<R>>(config)
+  return priRequest.request<LinkisData<R>>(config)
     .then(res => {
       if (!res.statusCode) {
         return Promise.reject(res.data);
@@ -45,4 +45,4 @@ export const linkisRequest = <T=any, R=any>(config: LinkisReqConfig<T, R>) => {
     })
 }
 
-export default hyRequest
+export default linkisRequest

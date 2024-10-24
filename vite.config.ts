@@ -64,11 +64,13 @@ export default defineConfig({
     port: 8067,
     proxy: {
       '/api': {
+        // 代理本地的 mock 服务
         target: 'http://localhost:3002',
+        // target: 'https://hl-data-studio.juziboss.com',
         changeOrigin: true,
         secure: false,
         headers: {
-          'Cookie': 'linkis_user_session_ticket_id_v1=M7UZXQP9Ld0u5F6Lt8KErYS6uEQQ/nsJ2HLiVea4FcQ='
+          'Cookie': 'linkis_user_session_ticket_id_v1=M7UZXQP9Ld1jLe4evJP0TS4foxtJfjFU2HLiVea4FcQ='
         }
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },

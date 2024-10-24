@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
+
+    /* Language and Environment */
+    "target": "ESNext",
+    // "lib": ["ES2020", "DOM", "DOM.Iterable"],  // 包含的 lib, 设置 target 后就不需要设置了
+    "jsx": "preserve",                // jsx 编译语法
+    "useDefineForClassFields": true,  // 使用 Object.defineProperty 定义类的方法
+
+
+    /* Modules */
+    "module": "ESNext",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
-
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "resolveJsonModule": true,   // Enable importing .json files.
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -17,7 +22,6 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
@@ -26,8 +30,8 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
 
-    /* added by user */
-    "resolveJsonModule": true
+    /* Completeness */
+    "skipLibCheck": true  // 不检查所有的 .d.ts 文件的类型
   },
 //  "include": ["src", "vite.config.ts",
 //    "src/@types/react-app-env.d.ts", "src/@types/i18next.d.ts"

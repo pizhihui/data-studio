@@ -105,6 +105,9 @@ importers:
       '@types/css-modules':
         specifier: ^1.0.5
         version: 1.0.5
+      '@types/lodash':
+        specifier: ^4.17.12
+        version: 4.17.12
       '@types/node':
         specifier: ^22.5.0
         version: 22.5.0
@@ -923,6 +926,9 @@ packages:
 
   '@types/hoist-non-react-statics@3.3.5':
     resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
+
+  '@types/lodash@4.17.12':
+    resolution: {integrity: sha512-sviUmCE8AYdaF/KIHLDJBQgeYzPBI0vf/17NaYehBJfYD1j6/L95Slh07NlyK2iNyBNaEkb3En2jRt+a8y3xZQ==}
 
   '@types/node@22.5.0':
     resolution: {integrity: sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==}
@@ -3451,6 +3457,8 @@ snapshots:
     dependencies:
       '@types/react': 18.3.4
       hoist-non-react-statics: 3.3.2
+
+  '@types/lodash@4.17.12': {}
 
   '@types/node@22.5.0':
     dependencies:

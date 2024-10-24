@@ -4,6 +4,7 @@ import { getToken } from '../utils/userTokenUtils.ts'
 
 const instance = axios.create({
   // baseURL: 'http://localhost:3001',
+  baseURL: '/api/rest_j/v1',
   timeout: 10 * 1000
 })
 
@@ -16,11 +17,15 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  res => {
-    const resData = (res.data || {}) as ResType
+  (res: AxiosResponse<ResType>) => {
+    // http 本身请求的 code 判断
+    if(res.status !== 200) {
+      AntMessage.error(res.statusText)
+    }
+
+    const resData = res.data || {}
     const { status, message, data, method } = resData
-    // error
-    // console.log('axios responsexxx', resData)
+    // 业务接口返回的 code 判断
     if (status !== 0) {
       if (message) {
         AntMessage.error(message)
@@ -34,11 +39,11 @@ instance.interceptors.response.use(
 
 export default instance
 
-export type ResType = {
+export type ResType<T = any> = {
   status: number
   method: string
   message?: string
-  data?: ResDataType
+  data?: T
 }
 export type ResDataType = {
   // 索引签名

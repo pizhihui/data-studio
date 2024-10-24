@@ -1,8 +1,8 @@
-import hyRequest from '@/services/requests';
+import linkisRequest from '@/services/requests';
 
 
 export function listFileTrees(path: string) {
-  return hyRequest.get({
+  return linkisRequest.get({
     url: '/filesystem/getDirFileTrees',
     params: {
       path: path

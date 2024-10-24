@@ -5,7 +5,7 @@ import {S2CellType, S2DataConfig, S2Options, ThemeCfg, TooltipContentType} from 
 import {Card, Flex, Space} from 'antd'
 
 import '@antv/s2/dist/style.min.css'
-import {getTableInfoService} from '@/pages/DataStudio/services/DataStudioService.ts'
+import {getTableInfoService} from '@/pages/DataStudio/services/ServiceDatasource.ts'
 import {useRequest} from 'ahooks'
 import { ColumnInfoType } from '@/pages/DataStudio/model.ts'
 

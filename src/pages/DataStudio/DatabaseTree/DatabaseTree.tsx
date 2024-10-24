@@ -3,12 +3,12 @@ import { Input, Space, Spin, Tree, TreeDataNode } from 'antd'
 import { CarryOutOutlined, FormOutlined, ReloadOutlined, CheckOutlined } from '@ant-design/icons'
 import SchemaTree from '@/components/DataSource/SchemaTree'
 import { useAppDispatch, useAppSelector } from '@/store'
-import { getDbsTreeService, getTablesTreeService } from '@/pages/DataStudio/services/DataStudioService.ts'
 import type { DataNode, Key } from 'rc-tree/lib/interface';
 import { buildSchemaTree } from '@/pages/DataStudio/functions.tsx'
 import { CircleBtn } from '@/components/CallBackButton/CircleBtn.tsx'
 import { addMetaTabAction, updateMetaResultTabsActiveKey } from '@/pages/DataStudio/store/DataStudioSlice.ts'
 import { BottomTabType } from '@/pages/DataStudio/BottomPane/BottomPane.tsx'
+import { getDbsTreeService, getTablesTreeService } from '@/pages/DataStudio/services/ServiceDatasource.ts'
 
 const { DirectoryTree } = Tree
 

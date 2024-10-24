@@ -9,7 +9,7 @@ type PropsType = {
 
 const Tooltip: React.FC<PropsType> = ({ content, position }) => {
   return ReactDOM.createPortal(
-    <div className="tooltip" style={{ left: position.left, top: position.top }}>
+    <div className="list-tabs-tooltip" style={{ left: position.left, top: position.top }}>
       {content}
     </div>,
     document.body
